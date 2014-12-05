@@ -2477,7 +2477,7 @@ var domains = {
   "1-apple.com.tw": 1
 };
 
-var proxy = "PROXY hz.railgun.rocks:58888; DIRECT;";
+var proxy = "PROXY qc.shellp.com:58888; DIRECT;";
 
 var direct = 'DIRECT;';
 
