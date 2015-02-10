@@ -1,0 +1,140 @@
+@import url(webfonts/fontello.css);
+header #user_info {
+  width: 336px;
+  margin: 0;
+  padding: 40px 30px;
+  transition: all 0.5s;
+}
+header #user_info .face {
+  border: white 8px solid;
+  border-radius: 50%;
+  -o-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+header #user_info .name_panel {
+  margin: 29px 0 10px 0;
+}
+header #user_info .name_panel .name {
+  font-size: 30px;
+  margin: 0 10px 10px 10px;
+}
+header #user_info .name_panel .user_type {
+  color: #ffae00;
+}
+header #user_info .user_detail {
+  margin: 0 0 0 20px;
+}
+header #user_info .user_detail .icon-chart-pie::after {
+  content: 'Mb';
+}
+header #user_info .user_detail .icon-money::after {
+  content: '元';
+}
+#highlight {
+  background: #854ceb;
+  padding: 0 30px;
+}
+#highlight a:link,
+#highlight a:active,
+#highlight a:visited {
+  color: white;
+  font-size: 14px;
+  line-height: 3em;
+  text-decoration: none;
+}
+#main .card {
+  margin: 15px 50px;
+}
+#main h2 {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: normal;
+  color: #454545;
+}
+#main .hint {
+  margin: 20px 0 10px 0;
+  color: #161419;
+  display: flex;
+}
+#main .hint .detail {
+  margin-left: 20px;
+}
+#main .hint .device {
+  font-size: 65px;
+  color: #1f1138;
+  display: flex;
+  box-pack: center;
+  align-items: center;
+  transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+}
+#main .hint .device:hover {
+  transform: rotate(15deg);
+}
+#main .hint .device_name {
+  color: #240d4a;
+}
+#main .hint .hint_title {
+  font-size: 18px;
+  line-height: 35px;
+}
+#main .hint .hint_subTitle {
+  font-size: 12px;
+}
+#main .hint .hint_detail {
+  font-size: 14px;
+  line-height: 25px;
+}
+#main ul.clear {
+  margin: 10px 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+#main ul.clear li {
+  max-width: 100px;
+  min-width: 100px;
+  margin: 10px 0;
+  text-align: center;
+  flex: 1;
+  cursor: pointer;
+}
+#main ul.clear li:hover a {
+  color: #20113c;
+}
+#main ul.clear li:hover a::before {
+  color: #140f1d;
+}
+#main ul.clear li a {
+  display: block;
+  position: relative;
+  color: #140b24;
+  font-size: 12px;
+}
+#main ul.clear li a::before {
+  left: 50%;
+  margin: 20px 0;
+  margin-left: -20px;
+  color: #3a2c52;
+  font-size: 40px;
+  text-align: center;
+  display: block;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all ease-in-out 0.2s;
+}
+@media only screen and (max-width: 820px) {
+  #user_info {
+    padding-top: 120px !important;
+  }
+}
+@media only screen and (max-width: 530px) {
+  #user_info {
+    left: 50%;
+    margin-left: -198px;
+    padding-top: 100px !important;
+    position: relative;
+  }
+}
