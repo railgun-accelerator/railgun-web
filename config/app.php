@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'https://railgun.ac',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Shanghai',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'zh-CN',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'Uc-9*i9N7VTF7b3(Npw5P^27SkYJUL3b'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
