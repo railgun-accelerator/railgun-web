@@ -260,8 +260,12 @@ header {
       opacity: 1;
       animation: loading_shine 400ms ease-in-out infinite alternate;
     }
+    &.paused {
+      visibility: visible !important;
+      opacity: 1;
+    }
     &.finished {
-      opacity: 0.3;
+      opacity: 0.5;
     }
     &.exit {
       left: -1000px !important;
@@ -532,5 +536,10 @@ header {
 
   .logo {
     right: -1000px !important;
+  }
+
+  .icon-spin2 {
+    left: 50% !important;
+    margin-left: -45px !important;
   }
 }

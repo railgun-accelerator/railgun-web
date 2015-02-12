@@ -242,8 +242,12 @@ header .index_form.loading {
   opacity: 1;
   animation: loading_shine 400ms ease-in-out infinite alternate;
 }
+header .index_form.paused {
+  visibility: visible !important;
+  opacity: 1;
+}
 header .index_form.finished {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 header .index_form.exit {
   left: -1000px !important;
@@ -509,5 +513,9 @@ header form .scheckbox input {
   }
   .logo {
     right: -1000px !important;
+  }
+  .icon-spin2 {
+    left: 50% !important;
+    margin-left: -45px !important;
   }
 }

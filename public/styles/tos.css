@@ -2,21 +2,25 @@
 #main {
   margin: 60px 30px;
   column-count: 2;
-  column-gap: 10px;
+  column-gap: 0;
 }
 #main .card {
   margin: 20px 0;
+  padding-left: 120px;
   position: relative;
   display: inline-block;
 }
 #main .card i::after {
+  width: 90px;
+  height: 90px;
   top: 50%;
-  margin-top: -32.5px;
+  left: 0;
+  margin-top: -45px;
   color: #4309d2;
   font-size: 90px;
   line-height: 1em;
   float: left;
-  position: relative;
+  position: absolute;
   display: block;
 }
 #main .card > div {
@@ -31,4 +35,9 @@
   font-size: 13px;
   line-height: 1.8em;
   color: #1c0b47;
+}
+@media only screen and (max-width: 930px) {
+  #main {
+    column-count: 1;
+  }
 }
