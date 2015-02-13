@@ -1,0 +1,15 @@
+{
+  "name": "railgun-web",
+  "description": "web for Railgun Accelerator",
+  "version": "0.0.0",
+  "homepage": "https://railgun.ac/",
+  "license": "AGPLv3",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.3.13",
+    "angular-route": "~1.3.13",
+    "angular-animate": "~1.3.13",
+    "ng-token-auth": "~0.0.24",
+    "angular-cookie": "~4.0.6"
+  }
+}

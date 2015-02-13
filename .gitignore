@@ -1,7 +1,7 @@
 #jetbrains
 /.idea/
 #composer
-/composer.phar
+/public/bower_components
 /vendor/
 # Windows image file caches
 Thumbs.db
