@@ -1,1 +1,1 @@
-Cloud code project for railgun. Cloud Code Guide: https://cn.avoscloud.com/docs/cloud_code_guide.html
+Railgun Accelerator 的站点。public下为前端页面。
