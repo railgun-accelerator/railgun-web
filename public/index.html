@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="zh-CN" ng-app="railgun" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="zh-CN" ng-app="railgun" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="zh-CN" ng-app="railgun" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="zh-CN" ng-app="railgun" class="no-js"> <!--<![endif]-->
-<head>
+<html>
+<head lang="en">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#5c00ff">
     <meta name="viewport" content="width=500, width=device-width, initial-scale=1, maximum-scale=1">
-    <base href="/railgun-web/public/" />
     <link type="text/css" rel="stylesheet" href="styles/main.css"/>
     <link type="text/css" rel="stylesheet" id="custom_style" href="styles/index.css"/>
-    <link type="text/css" rel="stylesheet" href="css/app.css"/>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/prefixfree.min.js"></script>
-    <title>轨道炮 piu——</title>
+    <title>电磁炮 piu——</title>
 </head>
 <body>
 <header>
@@ -27,8 +21,54 @@
         <li class="nav_item d"><a href="#">关于</a></li>
     </nav>
 
-    <div ng-view class="main slide"></div>
+    <div id="intro">
+        <h1>电磁炮加速计划</h1>
 
+        <p class="subtitle">大声呼喊，世界你好</p>
+
+        <div class="button_group clear">
+            <a href="#" id="login">登陆</a>
+            <a href="#" id="register">注册</a>
+        </div>
+    </div>
+
+    <div class="clear index_form" id="login_form">
+        <h2>登陆</h2>
+
+        <p class="warning">用户名不存在</p>
+
+        <form>
+            <input type="text" placeholder="用户名/Email" name="username"/> <br>
+            <input type="password" placeholder="密码" name="password"/> <br>
+
+            <label class="scheckbox"><input type="checkbox" name="save">保存登录状态</label> <br>
+
+            <button class="right" type="submit">登陆</button>
+            <button class="cancel right">取消</button>
+        </form>
+    </div>
+
+    <div class="clear index_form" id="register_form">
+        <h2>注册</h2>
+
+        <p class="warning">密码错误</p>
+
+        <form>
+            <input type="text" placeholder="用户名" name="username"/> <br>
+            <input type="text" placeholder="密码" name="password"/> <br>
+            <input type="text" placeholder="邮箱" name="email"/> <br>
+            <input type="text" placeholder="优惠码" name="offer"/> <br>
+
+            <p class="info">*数据库中密码使用明文存储，请设置为不常用密码</p>
+
+            <label class="scheckbox">
+                <input type="checkbox" name="accept">没读过玩命写的<a href="tos.html">许可协议</a>自愿被肛
+            </label> <br>
+
+            <button class="right" type="submit">注册</button>
+            <button class="cancel right">取消</button>
+        </form>
+    </div>
 </header>
 <section id="main">
     <ul class="spec clear">
@@ -64,16 +104,11 @@
 </section>
 <section class="blank"></section>
 <footer>
-    <p>&copy; 2015 somebody</p>
-    <p>Designed By <a href="https://plus.google.com/u/0/+LossesDon/posts">Losses Don</a></p>
+    <p>&copy; 2015 Railgun</p>
+
+    <p>Designed By<a href="http://www.qzworld.net">LTS</a></p>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/index.js"></script>
 </footer>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-cookie/angular-cookie.js"></script>
-<script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
-<script src="js/app.js"></script>
-<script src="scripts/main.js"></script>
-<!--<script src="scripts/index.js"></script>-->
 </body>
 </html>

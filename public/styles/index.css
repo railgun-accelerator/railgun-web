@@ -311,8 +311,7 @@ header form label {
   text-align: left;
 }
 header form input[type='password'],
-header form input[type='text'],
-header form input[type='email'] {
+header form input[type='text'] {
   width: 200px;
   background: transparent;
   border: white 1px solid;
@@ -325,90 +324,76 @@ header form input[type='email'] {
   transition: all 0.2s ease-in;
 }
 header form input[type='password']::-webkit-input-placeholder,
-header form input[type='text']::-webkit-input-placeholder,
-header form input[type='email']::-webkit-input-placeholder {
+header form input[type='text']::-webkit-input-placeholder {
   color: white;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
 header form input[type='password']::-moz-placeholder,
-header form input[type='text']::-moz-placeholder,
-header form input[type='email']::-moz-placeholder {
+header form input[type='text']::-moz-placeholder {
   color: white;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
 header form input[type='password']:-moz-placeholder,
-header form input[type='text']:-moz-placeholder,
-header form input[type='email']:-moz-placeholder {
+header form input[type='text']:-moz-placeholder {
   color: white;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
 header form input[type='password']:-ms-input-placeholder,
-header form input[type='text']:-ms-input-placeholder,
-header form input[type='email']:-ms-input-placeholder {
+header form input[type='text']:-ms-input-placeholder {
   color: white;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
 header form input[type='password']:focus,
-header form input[type='text']:focus,
-header form input[type='email']:focus {
+header form input[type='text']:focus {
   background: white;
   color: #5105e9;
   transition: all 0.2s ease-out;
 }
 header form input[type='password']:focus::-webkit-input-placeholder,
-header form input[type='text']:focus::-webkit-input-placeholder,
-header form input[type='email']:focus::-webkit-input-placeholder {
+header form input[type='text']:focus::-webkit-input-placeholder {
   color: #5105e9;
   opacity: 1;
 }
 header form input[type='password']:focus::-moz-placeholder,
-header form input[type='text']:focus::-moz-placeholder,
-header form input[type='email']:focus::-moz-placeholder {
+header form input[type='text']:focus::-moz-placeholder {
   color: #5105e9;
   opacity: 1;
 }
 header form input[type='password']:focus:-moz-placeholder,
-header form input[type='text']:focus:-moz-placeholder,
-header form input[type='email']:focus:-moz-placeholder {
+header form input[type='text']:focus:-moz-placeholder {
   color: #5105e9;
   opacity: 1;
 }
 header form input[type='password']:focus:-ms-input-placeholder,
-header form input[type='text']:focus:-ms-input-placeholder,
-header form input[type='email']:focus:-ms-input-placeholder {
+header form input[type='text']:focus:-ms-input-placeholder {
   color: #5105e9;
   opacity: 1;
 }
 header form input[type='password'].highlight,
-header form input[type='text'].highlight,
-header form input[type='email'].highlight {
+header form input[type='text'].highlight {
   border-color: #fdd000;
 }
 header form input[type='password'].highlight::-webkit-input-placeholder,
-header form input[type='text'].highlight::-webkit-input-placeholder,
-header form input[type='email'].highlight::-webkit-input-placeholder {
+header form input[type='text'].highlight::-webkit-input-placeholder {
   color: #fdd000;
   opacity: 1;
 }
 header form input[type='password'].highlight::-moz-placeholder,
-header form input[type='text'].highlight::-moz-placeholder,
-header form input[type='email'].highlight::-moz-placeholder {
+header form input[type='text'].highlight::-moz-placeholder {
   color: #fdd000;
   opacity: 1;
 }
 header form input[type='password'].highlight:-moz-placeholder,
-header form input[type='text'].highlight:-moz-placeholder,
-header form input[type='email'].highlight:-moz-placeholder {
+header form input[type='text'].highlight:-moz-placeholder {
   color: #fdd000;
   opacity: 1;
 }
 header form input[type='password'].highlight:-ms-input-placeholder,
-header form input[type='text'].highlight:-ms-input-placeholder,
-header form input[type='email'].highlight:-ms-input-placeholder {
+header form input[type='text'].highlight:-ms-input-placeholder {
   color: #fdd000;
   opacity: 1;
 }

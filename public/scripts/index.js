@@ -1,7 +1,6 @@
 /**
  * Created by Don on 2/4/2015.
  */
-
 $(document).ready(function () {
     var intro = $('#intro');
 
@@ -18,7 +17,7 @@ $(document).ready(function () {
     function hideForm(type) {
         var loginForm = $(type);
 
-        loginForm.removeClass('flow_up')
+        loginForm.removeClass('flow_up paused')
             .addClass('flow_down');
 
     }
@@ -43,7 +42,9 @@ $(document).ready(function () {
         intro.addClass('flow_down')
             .removeClass('flow_up');
 
-        if ($('#login_form').hasClass('flow_up')) {
+        var loginForm  =  $('#login_form');
+
+        if (loginForm.hasClass('flow_up') || loginForm.hasClass('paused')) {
             hideForm('#login_form');
         } else {
             hideForm('#register_form');
@@ -157,6 +158,15 @@ var losses = {
             clearTimeout(losses._CACHE_.warningTimeoutEvent);
             losses._CACHE_.warningTimeoutEvent = false;
         }
+
+        losses._STATUS_.loading = false;
+        $('.load_spiner').remove();
+        $('.loading').removeClass('loading')
+            .addClass('paused');
+
+        losses._ELEMENTS_.inputs.each(function () {
+            $(this).removeAttr('readonly');
+        });
 
         targetHeader.slideUp();
         targetWarning.slideDown();
