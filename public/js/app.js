@@ -41,7 +41,25 @@
         });
       };
     }
-  ]);
+  ]).directive('remote', function($q, $timeout, $http) {
+    return {
+      require: 'ngModel',
+      link: function(scope, elm, attrs, ctrl) {
+        return ctrl.$asyncValidators.remote = function(modelValue, viewValue) {
+          var params;
+          params = {};
+          params[attrs.name] = modelValue;
+          return $http.get("http://hz.railgun.rocks:45678/auth", {
+            params: params
+          }).then(function(response) {
+            return true;
+          })["catch"](function(response) {
+            return $q.reject(response.data.error);
+          });
+        };
+      }
+    };
+  });
 
 }).call(this);
 

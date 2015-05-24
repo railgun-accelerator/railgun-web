@@ -1,0 +1,61 @@
+网站端
+
+json API
+
+POST /sign_in
+  name (or_email), password
+  正确： HTTP/200
+  设置 cookies
+  返回用户的代理登录信息 (主机、端口等)
+  {name: 'zh99998', email: 'zh99998@gmail.com', 'type': 1, proxies: {http: {host: 'a.lv5.ac', port: 12345, status:1}}, pac:{url:'http://p.lv5.ac/12345', status:1}, ipsec: {...}}
+
+  账号错误：HTTP/200
+  {error: 'invalid'}
+
+  其他错误：其他错误码
+
+GET /proxies (重新检查代理端口可用性)
+  {http: {host: 'a.lv5.ac', port: 12345, status:1}}, pac:{url:'http://p.lv5.ac/12345', status:1}, ipsec: {...}}
+
+POST /sign_up_check
+  name, password, email, code
+  正确：HTTP/204
+  错误：HTTP/200
+  {error: 'invalid', field: 'name'} //用户名格式不正确
+  {error: 'occupied', field: 'name'} //用户名被占用
+  {error: 'invalid', field: 'password'} //用户名格式不正确
+  {error: 'invalid', field: 'email'} //邮箱格式不正确
+  {error: 'occupied', field: 'email'} //邮箱格式不正确
+  {error: 'invalid', field: 'code'} //邀请码不正确或已过期
+
+  必填字段存在性在前端验证，如果前端未验证打到后端了，返回格式不正确。
+  格式在前端验证，如果前端未验证打到后端了，返回格式不正确。
+
+POST /sign_up
+  与 sign_up_check 相同，
+  正确设置Cookie并返回
+
+POST /forget_password
+  email
+
+POST /do_forget_password
+  token name password
+
+HTML 网页
+
+
+GET /
+
+GET /email_verify
+
+GET /forget_password_verify
+
+GET /
+
+
+GET /email_verify
+  token
+  正确: 302 /my
+  错误: (HTML) 邮箱验证码有误
+
+GET /my 

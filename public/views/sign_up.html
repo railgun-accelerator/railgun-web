@@ -1,28 +1,26 @@
 <div class="clear index_form" ng-class="status" id="sign_up" ng-controller="SignUpController">
+    <i class="icon-spin2 animate-spin load_spiner" ng-show="status == 'loading'"></i>
+
     <h2>注册</h2>
 
-    <p class="warning">密码错误</p>
+    <p class="error">
+        <div ng-show="form.$submitted || form.name.$touched">
+            <span ng-show="form.name.$error.remote">{{form.name.$error.remote | json}}</span>
+        </div>
+        <div ng-show="form.$submitted || form.email.$touched">
+            <span ng-show="form.email.$error.taken">邮箱已经被占用.</span>
+        </div>
+        <div ng-show="form.$submitted || form.code.$touched">
+            <span ng-show="form.code.$error.invalid">邮箱已经被占用.</span>
+        </div>
+
+    </p>
 
     <form ng-submit="submit(user);" role="form" name="form">
-        <input ng-class="errors.name ? 'error' : ''" type="text" name="name" ng-model="user.name" required="required" placeholder="用户名" /> <br>
-        <div ng-show="form.$submitted || form.name.$touched">
-            <div ng-show="form.name.$error.required">Tell us your name.</div>
-        </div>
-        <input ng-class="errors.password ? 'error' : ''" type="password" name="password" ng-model="user.password" required="required" placeholder="密码"/> <br>
-        <div ng-show="form.$submitted || form.uEmail.$touched">
-            <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-            <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-        </div>
-        <input ng-class="errors.email ? 'error' : ''" type="email" name="email" ng-model="user.email" required="required" placeholder="邮箱"/> <br>
-        <div ng-show="form.$submitted || form.uEmail.$touched">
-            <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-            <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-        </div>
-        <input ng-class="errors.code ? 'error' : ''" type="text" name="code" ng-model="user.code" required="required" placeholder="邀请码"/> <br>
-        <div ng-show="form.$submitted || form.uEmail.$touched">
-            <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-            <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-        </div>
+        <input type="text" name="name" ng-model="user.name" placeholder="用户名" required remote ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"/> <br>
+        <input type="password" name="password" ng-model="user.password" required="required" placeholder="密码"/> <br>
+        <input type="email" name="email" ng-model="user.email" placeholder="邮箱" remote ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"/> <br>
+        <input type="text" name="code" ng-model="user.code" placeholder="邀请码" remote ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"/> <br>
         <p class="info"><a href="#">如果没有邀请码请点击此处申请</a></p>
         <label>
             <input type="checkbox" name="agree" required="required">我同意<a href="tos.html">服务条款</a>

@@ -44,3 +44,15 @@ angular.module('railgun', [
         $scope.errors = response.data.fields
         $scope.status = 'input'
 ])
+
+.directive 'remote', ($q, $timeout, $http)->
+  require: 'ngModel',
+  link: (scope, elm, attrs, ctrl)->
+    ctrl.$asyncValidators.remote = (modelValue, viewValue)->
+      params = {}
+      params[attrs.name] = modelValue
+      $http.get("http://hz.railgun.rocks:45678/auth", params: params)
+      .then (response)->
+        true
+      .catch (response)->
+        $q.reject(response.data.error)
