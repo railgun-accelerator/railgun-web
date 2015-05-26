@@ -9,7 +9,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-
     <link rel="stylesheet" href="pay.css">
 </head>
 <body>
@@ -17,7 +16,7 @@
 <h1>用户充值</h1>
 账户余额: ¥0.00
 
-<form class="form-inline" action="https://paypal.railgun.ac/payments" method="POST">
+<form class="form-inline" action="https://railgun.ac/payments" method="POST">
     <div class="form-group">
         <label for="amount">充值金额</label>
         <input type="text" class="form-control" id="amount" name="amount" placeholder="">
@@ -25,16 +24,23 @@
     <br/>
     <div class="form-group">
         <label>支付方式</label>
+        <br>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" id="optionsRadios1" value="paypal" checked>
-                <img src="images/paypal.png" alt="立即使用PayPal购买" />
+                <span class="payment_wrapper"><img src="images/paypal.png" alt="立即使用PayPal购买" /></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" id="optionsRadios2" value="tenpay">
-                <img src="images/tenpay.png">
+                <span class="payment_wrapper"><img src="images/tenpay.png"></span>
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="payment" id="optionsRadios3" value="unionpay">
+                <span class="payment_wrapper"><img src="images/unionpay.png"></span>
             </label>
         </div>
         <p class="help-block">注: PayPal 会向我们收取高昂的手续费，您的 PayPal 付款将会以 1 USD = 6 RMB 的比例加入账户余额。</p>
@@ -42,91 +48,91 @@
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="ICBC">
-                <img src="images/ICBC.png">
+                <span class="payment_wrapper"><img src="images/ICBC.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CMB">
-                <img src="images/CMB.png">
+                <span class="payment_wrapper"><img src="images/CMB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CCB">
-                <img src="images/CCB.png">
+                <span class="payment_wrapper"><img src="images/CCB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="ABC">
-                <img src="images/ABC.png">
+                <span class="payment_wrapper"><img src="images/ABC.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="SPDB">
-                <img src="images/SPDB.png">
+                <span class="payment_wrapper"><img src="images/SPDB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CIB">
-                <img src="images/CIB.gif">
+                <span class="payment_wrapper"><img src="images/CIB.gif"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="BOB">
-                <img src="images/BOB.gif">
+                <span class="payment_wrapper"><img src="images/BOB.gif"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CEB">
-                <img src="images/CEB.png">
+                <span class="payment_wrapper"><img src="images/CEB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CMBC">
-                <img src="images/CMBC.gif">
+                <span class="payment_wrapper"><img src="images/CMBC.gif"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="CITIC">
-                <img src="images/CITIC.png">
+                <span class="payment_wrapper"><img src="images/CITIC.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="GDB">
-                <img src="images/GDB.png">
+                <span class="payment_wrapper"><img src="images/GDB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="PAB">
-                <img src="images/PAB.png">
+                <span class="payment_wrapper"><img src="images/PAB.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="BOC">
-                <img src="images/BOC.png">
+                <span class="payment_wrapper"><img src="images/BOC.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="COMM">
-                <img src="images/COMM.png">
+                <span class="payment_wrapper"><img src="images/COMM.png"></span>
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="payment" value="POSTGC">
-                <img src="images/POSTGC.png">
+                <span class="payment_wrapper"><img src="images/POSTGC.png"></span>
             </label>
         </div>
     </div>
