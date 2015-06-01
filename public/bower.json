@@ -1,0 +1,25 @@
+{
+  "name": "railgun-web-public",
+  "version": "0.0.1",
+  "homepage": "https://github.com/railgun-accelerator/railgun-web",
+  "authors": [
+    "zh99998 <zh99998@gmail.com>"
+  ],
+  "license": "AGPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.9.6",
+    "angular-aria": "~1.4.0",
+    "angular-animate": "~1.4.0",
+    "angular-ui-router": "~0.2.15",
+    "HTML5-Reset": "~2.1.2",
+    "angular-messages": "~1.4.0"
+  }
+}

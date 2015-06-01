@@ -1,0 +1,245 @@
+nav
+  position absolute
+  overflow: hidden;
+  z-index: 1;
+  top: 20px;
+  right: 0;
+  ul
+    transition-property: width, margin, padding;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    padding-left: 20px;
+    padding-right: 30px;
+    background: #3e00a4;
+    transform: skew(-22.5deg);
+    margin-left: 15px;
+    margin-right: -15px;
+    li
+      display inline-block
+      &, &:hover
+        transition-property: background-color
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+        a
+          transition-property: color
+          transition-duration: 300ms;
+          transition-timing-function: ease-in-out;
+      a
+        color: white;
+        text-decoration: none;
+        display: block;
+        transform: skew(22.5deg);
+        padding: 20px 30px;
+        border: 0;
+        font-weight bold
+
+      &:hover
+        background-color: #fdd000
+        a
+          color: black
+
+
+
+header
+  background -webkit-linear-gradient(90deg, #5c00ff, #410cc7)
+  position relative
+  height 500px
+  color white
+  a:link, a:visited
+    color white
+
+
+footer
+  font-size 12px
+  line-height 20px
+  background #c0b5d3
+  padding 20px 30px
+  color #3c324d
+  p
+    margin 0
+    a:link, a:visited
+      color #2c184f
+      text-decoration none
+      border-bottom 1px dashed #20113c
+
+//index
+#jumbotron
+  position absolute
+  background url("../images/title.png") no-repeat;
+  background-size auto 380px
+  background-position: 80% bottom;
+  width: 100%;
+  height: 500px;
+
+  //index.index
+  .actions
+    position absolute
+    width 300px
+    margin-left 13%
+
+  #intro
+    padding-top 170px
+    text-align center
+    h1
+      font-size: 40px;
+      line-height: 60px;
+      font-weight: bold;
+    .subtitle
+      font-size: 15px;
+      line-height: 40px;
+      font-weight bold
+    #sign_buttons
+      display: inline-block;
+      margin: 15px auto;
+      border: 1px white solid;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight bold
+    a
+      width: 98px;
+      padding: 12px;
+      display: inline-block;
+      &:hover
+        color: #4e06e1;
+        background: white;
+        transition: all ease-in 0.3s;
+    a:link, a:visited
+      text-decoration: none;
+      border: none;
+  //index.sign_in
+  .sign-form
+    position absolute
+    padding 140px 35px 0 35px
+    width 300px
+    margin-left 13%
+    font-size: 13px;
+
+    h2
+      font-size: 25px;
+      line-height: 3em;
+      text-align: center;
+    .form-control
+      background: transparent;
+      border: white 1px solid;
+      border-radius: 3px;
+      color: white;
+      transition: all 0.2s ease-in;
+      outline: none;
+    button.form-control, a.form-control
+        text-decoration none
+        margin: 0 3px;
+        padding: 0 4px;
+        line-height 23px
+        display inline-block
+        &:hover
+          background: white;
+          color: #5105e9;
+          transition: all 0.2s ease-out;
+    input[type=text].form-control, input[type=password].form-control
+      width: 218px;
+      padding: 8px;
+      margin: 5px 0;
+      &::-webkit-input-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &::-moz-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &:-moz-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &:-ms-input-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &:focus {
+        background: white;
+        color: #5105e9;
+        transition: all 0.2s ease-out;
+        &::-webkit-input-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &:-moz-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+      }
+    input[type=checkbox].form-control
+      vertical-align inherit
+      margin-right: 5px;
+    .sign-buttons
+      float:right
+  #sign-up
+    padding-top 100px
+    #tos-link
+      text-decoration: none;
+      border-bottom: 1px white dashed;
+      margin-bottom 4px
+    .sign-buttons
+      margin-top: 10px;
+
+
+
+
+
+.feature
+  text-align center
+  position relative
+  margin 30px 30px
+  &:before
+    left: 50%;
+    font-size: 90px;
+    color: #5f25ee;
+    margin-left: -45px;
+    display: block;
+    position: absolute;
+  .title
+    font-size 30px
+    line-height 50px
+    color #1a0b3d
+    margin-top 90px
+  .description
+    margin-top 5px
+    font-size 14px
+    line-height 25px
+    color #301d5f
+    font-weight 500
+
+
+//test
+.actions
+  position absolute
+  opacity: 1;
+  top 0
+  transition: all .4s ease-in-out
+
+.actions.ng-enter-active,.actions.ng-leave
+  opacity: 1;
+  top 0
+.actions.ng-leave-active,.actions.ng-enter
+  opacity: 0;
+.actions.ng-leave-active
+  top 100px
+.actions.ng-enter
+  top -100px
+body.sign_in, body.sign_up
+  .actions.ng-leave-active
+    top -100px
+  .actions.ng-enter
+    top 100px
