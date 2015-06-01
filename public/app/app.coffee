@@ -1,5 +1,6 @@
 angular.module 'Railgun', [ 'ngMaterial', 'ngMessages', 'ui.router' ]
-.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider)->
+.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider)->
+  $locationProvider.html5Mode(true)
   $urlRouterProvider.otherwise("/");
   $stateProvider
   .state('index', {
