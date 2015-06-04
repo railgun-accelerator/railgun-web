@@ -1,23 +1,17 @@
 nav {
+  transition: all ease-in 0.5s;
   position: absolute;
   overflow: hidden;
   z-index: 1;
-  top: 20px;
+  top: 0;
   right: 0;
+  width: 100%;
 }
 nav ul {
-  transition-property: width, margin, padding;
+  transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-  padding-left: 20px;
-  padding-right: 30px;
   background: #3e00a4;
-  transform: skew(-22.5deg);
-  margin-left: 15px;
-  margin-right: -15px;
-}
-nav ul li {
-  display: inline-block;
 }
 nav ul li,
 nav ul li:hover {
@@ -32,10 +26,10 @@ nav ul li:hover a {
   transition-timing-function: ease-in-out;
 }
 nav ul li a {
+  text-align: center;
   color: #fff;
   text-decoration: none;
   display: block;
-  transform: skew(22.5deg);
   padding: 20px 30px;
   border: 0;
   font-weight: bold;
@@ -82,9 +76,13 @@ footer p a:visited {
   height: 500px;
 }
 #jumbotron .actions {
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
   position: absolute;
   width: 300px;
-  margin-left: 13%;
+  margin-left: -150px;
+  left: 50%;
 }
 #jumbotron #intro {
   padding-top: 170px;
@@ -285,8 +283,28 @@ body.sign_in .actions.ng-enter,
 body.sign_up .actions.ng-enter {
   top: 100px;
 }
+@media (min-width: 600px) {
+  nav {
+    top: 20px;
+    width: 418px;
+  }
+  ul {
+    transform: skew(-22.5deg);
+    padding-left: 20px;
+    padding-right: 30px;
+    margin-left: 15px;
+    margin-right: -15px;
+  }
+  ul li a {
+    transform: skew(22.5deg);
+  }
+}
 @media (min-width: 960px) {
   #jumbotron {
     background-position-x: 80%;
+  }
+  #jumbotron .actions {
+    margin-left: 0;
+    left: 13%;
   }
 }

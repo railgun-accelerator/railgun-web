@@ -82,11 +82,11 @@
 <body ng-class="$state.current.name.split('.')">
 
 <nav>
-    <ul>
-        <li class="nav_item a" nav-item><a href="#">首页</a></li>
-        <li class="nav_item b" nav-item><a href="https://blog.railgun.ac">公告</a></li>
-        <li class="nav_item c" nav-item><a href="https://status.railgun.ac">状态</a></li>
-        <li class="nav_item d" nav-item><a href="https://support.railgun.ac">帮助</a></li>
+    <ul layout="row">
+        <li class="nav_item a" nav-item flex><a href="#">首页</a></li>
+        <li class="nav_item b" nav-item flex><a href="https://blog.railgun.ac">公告</a></li>
+        <li class="nav_item c" nav-item flex><a href="https://status.railgun.ac">状态</a></li>
+        <li class="nav_item d" nav-item flex><a href="https://support.railgun.ac">帮助</a></li>
     </ul>
 </nav>
 <header ui-view="header"></header>
