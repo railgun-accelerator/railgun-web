@@ -1,5 +1,5 @@
 #jetbrains
-/.idea/
+/public/.idea/
 #composer
 /public/bower_components
 /vendor/
