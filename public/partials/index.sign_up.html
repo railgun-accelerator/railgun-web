@@ -1,12 +1,12 @@
 <div id="sign-up" class="sign-form">
     <h2>创建新账户</h2>
-    <form>
-        <input type="text" class="form-control" placeholder="用户名" name="username"> <br>
-        <input type="text" class="form-control" placeholder="密码" name="password"> <br>
-        <input type="text" class="form-control" placeholder="邮箱" name="email"> <br>
-        <input type="text" class="form-control" placeholder="优惠码 (没有可留空)" name="code"> <br>
+    <form ng-submit="sign_up(user);">
+        <input type="text" class="form-control" placeholder="用户名" name="username" ng-model="user.username"> <br>
+        <input type="text" class="form-control" placeholder="密码" name="password" ng-model="user.password"> <br>
+        <input type="text" class="form-control" placeholder="邮箱" name="email" ng-model="user.email"> <br>
+        <input type="text" class="form-control" placeholder="优惠码 (没有可留空)" name="code" ng-model="user.code"> <br>
 
-        <label class="checkbox-label"><input type="checkbox" class="form-control" name="accept">我已阅读并同意<a id="tos-link" href="/tos" target="_blank">服务条款</a></label> <br>
+        <label class="checkbox-label"><input type="checkbox" class="form-control" name="accept" ng-model="user.accept">我已阅读并同意<a id="tos-link" href="/tos" target="_blank">服务条款</a></label> <br>
 
         <div class="sign-buttons">
             <button class="form-control" type="submit">注册</button>
