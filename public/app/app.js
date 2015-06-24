@@ -13,12 +13,10 @@
           "body": {
             templateUrl: "partials/index.body.html"
           }
-        },
-        "class": "index"
+        }
       }).state('index.index', {
         url: "/",
-        templateUrl: "partials/index.index.html",
-        "class": "index"
+        templateUrl: "partials/index.index.html"
       }).state('index.sign_in', {
         url: "^/sign_in",
         templateUrl: "partials/index.sign_in.html"
@@ -26,6 +24,20 @@
         url: "^/sign_up",
         templateUrl: "partials/index.sign_up.html",
         controller: 'SignUpController'
+      }).state('my', {
+        abstract: true,
+        views: {
+          "header": {
+            templateUrl: "partials/my.header.html"
+          },
+          "body": {
+            templateUrl: "partials/my.body.html"
+          }
+        }
+      }).state('my.index', {
+        url: "^/my",
+        templateUrl: "partials/my.index",
+        controller: 'MyController'
       });
     }
   ]).config([
@@ -45,12 +57,13 @@
       return console.log($rootScope.state);
     }
   ]).controller('SignUpController', [
-    '$scope', '$auth', function($scope, $auth) {
+    '$scope', '$auth', '$state', function($scope, $auth, $state) {
       console.log($scope);
       return $scope.sign_up = function(user) {
         console.log(1);
         return $auth.submitRegistration(user).then(function(response) {
-          return console.log(response);
+          alert('已发送注册邮件');
+          return $state.go('my.index');
         })["catch"](function(response) {
           return console.log(response);
         });

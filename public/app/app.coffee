@@ -1,30 +1,41 @@
-angular.module 'Railgun', [ 'ngMaterial', 'ngMessages', 'ui.router', 'ng-token-auth' ]
-.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider)->
-  $locationProvider.html5Mode(true)
-  $urlRouterProvider.otherwise("/");
-  $stateProvider
-  .state('index', {
-    abstract: true,
-    views: {
-      "header": { templateUrl: "partials/index.header.html" },
-      "body": { templateUrl: "partials/index.body.html" }
-    },
-    class: "index"
-  })
-  .state('index.index', {
-      url: "/",
-      templateUrl: "partials/index.index.html"
-      class: "index"
-    })
-  .state('index.sign_in', {
-    url: "^/sign_in",
-    templateUrl: "partials/index.sign_in.html",
-  })
-  .state('index.sign_up', {
-      url: "^/sign_up",
-      templateUrl: "partials/index.sign_up.html",
-      controller: 'SignUpController'
-    })
+angular.module 'Railgun', ['ngMaterial', 'ngMessages', 'ui.router', 'ng-token-auth']
+.config ['$stateProvider', '$urlRouterProvider', '$locationProvider',
+  ($stateProvider, $urlRouterProvider, $locationProvider)->
+    $locationProvider.html5Mode(true)
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+    .state('index', {
+        abstract: true,
+        views: {
+          "header": {templateUrl: "partials/index.header.html"},
+          "body": {templateUrl: "partials/index.body.html"}
+        }
+      })
+    .state('index.index', {
+        url: "/",
+        templateUrl: "partials/index.index.html"
+      })
+    .state('index.sign_in', {
+        url: "^/sign_in",
+        templateUrl: "partials/index.sign_in.html",
+      })
+    .state('index.sign_up', {
+        url: "^/sign_up",
+        templateUrl: "partials/index.sign_up.html",
+        controller: 'SignUpController'
+      })
+    .state('my', {
+        abstract: true,
+        views: {
+          "header": {templateUrl: "partials/my.header.html"},
+          "body": {templateUrl: "partials/my.body.html"}
+        }
+      })
+    .state('my.index', {
+        url: "^/my",
+        templateUrl: "partials/my.index"
+        controller: 'MyController'
+      })
 ]
 .config ['$authProvider', ($authProvider)->
   $authProvider.configure
@@ -41,13 +52,14 @@ angular.module 'Railgun', [ 'ngMaterial', 'ngMessages', 'ui.router', 'ng-token-a
   console.log $rootScope.state
 ]
 
-.controller 'SignUpController', [ '$scope', '$auth', ($scope, $auth)->
+.controller 'SignUpController', ['$scope', '$auth', '$state', ($scope, $auth, $state)->
   console.log $scope
   $scope.sign_up = (user)->
     console.log(1)
     $auth.submitRegistration(user)
     .then (response)->
-      console.log response
+      alert('已发送注册邮件');
+      $state.go('my.index')
     .catch (response)->
       console.log response
 #  $scope.status = 'input'

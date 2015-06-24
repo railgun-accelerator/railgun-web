@@ -154,59 +154,69 @@ footer p a:visited {
   color: #5105e9;
   transition: all 0.2s ease-out;
 }
-#jumbotron .sign-form input[type=text].form-control,
-#jumbotron .sign-form input[type=password].form-control {
+#jumbotron .sign-form .form-control[type=text],
+#jumbotron .sign-form .form-control[type=password],
+#jumbotron .sign-form .form-control[type=email] {
   width: 218px;
   padding: 8px;
   margin: 5px 0;
 }
-#jumbotron .sign-form input[type=text].form-control::-webkit-input-placeholder,
-#jumbotron .sign-form input[type=password].form-control::-webkit-input-placeholder {
+#jumbotron .sign-form .form-control[type=text]::-webkit-input-placeholder,
+#jumbotron .sign-form .form-control[type=password]::-webkit-input-placeholder,
+#jumbotron .sign-form .form-control[type=email]::-webkit-input-placeholder {
   color: #fff;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
-#jumbotron .sign-form input[type=text].form-control::-moz-placeholder,
-#jumbotron .sign-form input[type=password].form-control::-moz-placeholder {
+#jumbotron .sign-form .form-control[type=text]::-moz-placeholder,
+#jumbotron .sign-form .form-control[type=password]::-moz-placeholder,
+#jumbotron .sign-form .form-control[type=email]::-moz-placeholder {
   color: #fff;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
-#jumbotron .sign-form input[type=text].form-control:-moz-placeholder,
-#jumbotron .sign-form input[type=password].form-control:-moz-placeholder {
+#jumbotron .sign-form .form-control[type=text]:-moz-placeholder,
+#jumbotron .sign-form .form-control[type=password]:-moz-placeholder,
+#jumbotron .sign-form .form-control[type=email]:-moz-placeholder {
   color: #fff;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
-#jumbotron .sign-form input[type=text].form-control:-ms-input-placeholder,
-#jumbotron .sign-form input[type=password].form-control:-ms-input-placeholder {
+#jumbotron .sign-form .form-control[type=text]:-ms-input-placeholder,
+#jumbotron .sign-form .form-control[type=password]:-ms-input-placeholder,
+#jumbotron .sign-form .form-control[type=email]:-ms-input-placeholder {
   color: #fff;
   opacity: 0.8;
   transition: all 0.2s ease-in;
 }
-#jumbotron .sign-form input[type=text].form-control:focus,
-#jumbotron .sign-form input[type=password].form-control:focus {
+#jumbotron .sign-form .form-control[type=text]:focus,
+#jumbotron .sign-form .form-control[type=password]:focus,
+#jumbotron .sign-form .form-control[type=email]:focus {
   background: #fff;
   color: #5105e9;
   transition: all 0.2s ease-out;
 }
-#jumbotron .sign-form input[type=text].form-control:focus::-webkit-input-placeholder,
-#jumbotron .sign-form input[type=password].form-control:focus::-webkit-input-placeholder {
+#jumbotron .sign-form .form-control[type=text]:focus::-webkit-input-placeholder,
+#jumbotron .sign-form .form-control[type=password]:focus::-webkit-input-placeholder,
+#jumbotron .sign-form .form-control[type=email]:focus::-webkit-input-placeholder {
   color: #5105e9;
   opacity: 1;
 }
-#jumbotron .sign-form input[type=text].form-control:focus::-moz-placeholder,
-#jumbotron .sign-form input[type=password].form-control:focus::-moz-placeholder {
+#jumbotron .sign-form .form-control[type=text]:focus::-moz-placeholder,
+#jumbotron .sign-form .form-control[type=password]:focus::-moz-placeholder,
+#jumbotron .sign-form .form-control[type=email]:focus::-moz-placeholder {
   color: #5105e9;
   opacity: 1;
 }
-#jumbotron .sign-form input[type=text].form-control:focus:-moz-placeholder,
-#jumbotron .sign-form input[type=password].form-control:focus:-moz-placeholder {
+#jumbotron .sign-form .form-control[type=text]:focus:-moz-placeholder,
+#jumbotron .sign-form .form-control[type=password]:focus:-moz-placeholder,
+#jumbotron .sign-form .form-control[type=email]:focus:-moz-placeholder {
   color: #5105e9;
   opacity: 1;
 }
-#jumbotron .sign-form input[type=text].form-control:focus:-ms-input-placeholder,
-#jumbotron .sign-form input[type=password].form-control:focus:-ms-input-placeholder {
+#jumbotron .sign-form .form-control[type=text]:focus:-ms-input-placeholder,
+#jumbotron .sign-form .form-control[type=password]:focus:-ms-input-placeholder,
+#jumbotron .sign-form .form-control[type=email]:focus:-ms-input-placeholder {
   color: #5105e9;
   opacity: 1;
 }
