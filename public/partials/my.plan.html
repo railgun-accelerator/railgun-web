@@ -1,0 +1,65 @@
+<form>
+    <h2 class="md-title">接入地区</h2>
+
+    <p>请选择据您最近的地区</p>
+
+    <div layout="row">
+        <md-select ng-model="region_id" placeholder="地域">
+            <md-option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</md-option>
+        </md-select>
+        <md-select ng-model="zone_id" placeholder="Topping">
+            <md-option ng-repeat="zone in zones | filter: {region_id: region_id}" value="{{zone.id}}">{{zone.name}}
+            </md-option>
+        </md-select>
+    </div>
+
+    <h2 class="md-title">套餐</h2>
+
+    <div layout="row">
+        <label class="md-raised md-button md-default-theme" flex>
+            <input type="radio" name="plan_id" value="1">
+
+            <h3>Level 1 炮姐体验版</h3>
+
+            <p>适用于只用移动端上网或上网不多的用户</p>
+
+            <p>5 GB / 月</p>
+
+            <p>￥15 / 月</p>
+        </label>
+        <label class="md-raised md-button md-default-theme" flex>
+            <input type="radio" name="plan_id" value="2" checked>
+
+            <h3>Level 3 炮姐大众版</h3>
+
+            <p>适用于大多数用户</p>
+
+            <p>20 GB / 月</p>
+
+            <p>￥50 / 月</p>
+        </label>
+        <label class="md-raised md-button md-default-theme" flex>
+            <input type="radio" name="plan_id" value="3">
+
+            <h3>Level 4 炮姐专业版</h3>
+
+            <p>适用于视频和下载狂魔</p>
+
+            <p>50 GB / 月</p>
+
+            <p>￥99 / 月</p>
+        </label>
+        <label class="md-raised md-button md-default-theme" flex>
+            <input type="radio" name="plan_id" value="4">
+
+            <h3>Level 5 炮姐企业版</h3>
+
+            <p>适用于小型企业或非盈利组织</p>
+
+            <p>请 提交工单 来描述您的需求</p>
+        </label>
+    </div>
+
+    <input type="submit" class="md-primary md-raised md-button md-default-theme">
+
+</form>

@@ -43,12 +43,17 @@ nav ul li:hover a {
 header {
   background: -webkit-linear-gradient(90deg, #5c00ff, #410cc7);
   position: relative;
-  height: 500px;
   color: #fff;
 }
-header a:link,
-header a:visited {
+header a {
   color: #fff;
+  text-decoration: none;
+}
+.welcome header {
+  min-height: 500px;
+}
+.my header {
+  min-height: 200px;
 }
 footer {
   font-size: 12px;
@@ -60,11 +65,13 @@ footer {
 footer p {
   margin: 0;
 }
-footer p a:link,
-footer p a:visited {
+footer p a {
   color: #2c184f;
   text-decoration: none;
   border-bottom: 1px dashed #20113c;
+}
+#body {
+  background-color: #fafafa;
 }
 #jumbotron {
   position: absolute;
@@ -116,8 +123,7 @@ footer p a:visited {
   background: #fff;
   transition: all ease-in 0.3s;
 }
-#jumbotron #intro a:link,
-#jumbotron #intro a:visited {
+#jumbotron #intro a {
   text-decoration: none;
   border: none;
 }
@@ -238,6 +244,42 @@ footer p a:visited {
 #jumbotron #sign-up .sign-buttons {
   margin-top: 10px;
 }
+#user {
+  margin: 0;
+  padding: 40px 30px;
+  transition: all 0.5s;
+}
+#user-avatar {
+  width: 136px;
+  height: 136px;
+  border: #fff 8px solid;
+  -webkit-border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  float: left;
+}
+#user-detail {
+  float: left;
+  margin: 0 0 0 20px;
+}
+#user-name-type {
+  margin: 29px 0 10px 0;
+}
+#user-name {
+  font-size: 30px;
+  margin: 0 10px 10px 4px;
+}
+.user-tag {
+  color: #ffae00;
+}
+#pay-button {
+  border: 1px #fff solid;
+  border-radius: 3px;
+  font-size: 11px;
+  margin: 0 0 0 10px;
+  padding: 2px 6px;
+  transition: all ease-out 0.2s;
+  text-decoration: none;
+}
 .feature {
   text-align: center;
   position: relative;
@@ -263,6 +305,234 @@ footer p a:visited {
   line-height: 25px;
   color: #301d5f;
   font-weight: 500;
+}
+#my-container {
+  padding: 15px 50px;
+}
+.my.index h2 {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: normal;
+  color: #454545;
+}
+#current-platform-logo {
+  font-size: 65px;
+  color: #1f1138;
+  -webkit-box-pack: center;
+  align-items: center;
+  float: left;
+}
+#current-platform-tutorial {
+  margin-left: 120px;
+}
+#current-platform dl,
+#current-platform dt,
+#current-platform dd {
+  border: solid 1px #000;
+}
+#current-platform dl {
+  width: 400px;
+}
+#current-platform dt {
+  float: left;
+  width: 160px;
+}
+#current-platform dd {
+  margin-left: 160px;
+}
+#current-platform-detail {
+  margin-left: 160px;
+}
+.my-section {
+  overflow: hidden;
+  margin: 10px 0 20px 0;
+}
+.my-section li a {
+  float: left;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  color: #140b24;
+  font-size: 12px;
+}
+.my-section li a::before {
+  left: 50%;
+  margin: 20px 0;
+  margin-left: -20px;
+  color: #3a2c52;
+  font-size: 40px;
+  text-align: center;
+  display: block;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.table-horizontal {
+  width: 100%;
+}
+.table-horizontal td {
+  padding: 0.4em 0.3em 0.4em 0.4em;
+}
+.table-horizontal td:nth-of-type(1) {
+  text-align: right;
+  font-weight: bold;
+}
+.table-horizontal td:nth-of-type(3) {
+  font-size: 12px;
+  color: #777;
+}
+.form-group {
+  clear: both;
+}
+.payment-label {
+  width: 16.66666667%;
+  padding: 7px 15px inherit 15px;
+  text-align: right;
+  font-weight: bold;
+  float: left;
+}
+.payment-value {
+  width: 83.33333333%;
+  float: left;
+}
+.payment-value input[name=amount] {
+  width: 160px;
+}
+input[name=method] {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[name=method]:checked + .payment-method-label {
+  background-color: #c0b5d3;
+}
+.payment-method-label {
+  width: 115px;
+  height: 48px;
+  margin: 5px 4px;
+  display: inline-block;
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-out, background-color 0.3s ease-out;
+}
+.payment-method-label:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+a.payment-method-label {
+  line-height: 48px;
+  vertical-align: top;
+  text-align: center;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+a.payment-method-label.ng-animate {
+  transition: none;
+}
+#ongoing-payment-hint {
+  color: #737373;
+  margin: 24px 24px 0 24px;
+  font-size: 14px;
+}
+table.dataTable thead th {
+  padding: 22px 24px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.54);
+  border-bottom: 1px solid #ddd;
+}
+table.dataTable thead th.sorting_desc,
+table.dataTable thead th.sorting_asc {
+  color: rgba(0,0,0,0.87);
+}
+table.dataTable tbody td {
+  padding: 17.5px 24px;
+  font-size: 13px;
+  font-weight: normal;
+  color: rgba(0,0,0,0.87);
+/*thead .sorting
+        background-image: url("https://railgun.ac/bower_components/datatables/media/css/../images/sort_both.png");*/
+}
+table.dataTable tbody td.hint {
+  color: #777;
+  font-size: 12px;
+}
+table.dataTable tbody tr:hover {
+  background-color: #eee;
+}
+table.dataTable .row-border tbody th,
+table.dataTable .display tbody th,
+table.dataTable .row-border tbody td,
+table.dataTable .display tbody td {
+  border-top: 1px solid #ddd;
+}
+table.dataTable .row-border tbody tr:first-child th,
+table.dataTable .display tbody tr:first-child th,
+table.dataTable .row-border tbody tr:first-child td,
+table.dataTable .display tbody tr:first-child td {
+  border-top: none;
+}
+table.dataTable.no-footer {
+  border-bottom: 1px solid #ddd;
+}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border-bottom: 1px solid #ddd;
+  box-sizing: content-box;
+}
+.dataTables_title {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  float: left;
+}
+.dataTables_filter {
+  font-size: 12px;
+  font-family: Roboto;
+  font-weight: normal;
+  color: rgba(0,0,0,0.54);
+  padding: 16px 14px 16px 0;
+}
+.dataTables_filter input {
+  line-height: 18px;
+}
+.dataTables_footer {
+  text-align: right;
+  line-height: 24px;
+  padding: 16px 0;
+}
+.dataTables_footer .dataTables_length,
+.dataTables_footer .dataTables_info,
+.dataTables_footer .dataTables_paginate {
+  display: inline-block;
+  float: inherit;
+  font-size: 12px;
+  font-family: Roboto;
+  font-weight: normal;
+  color: rgba(0,0,0,0.54);
+  padding: 0 32px 0 0;
+}
+.dataTables_footer .dataTables_length:last-child,
+.dataTables_footer .dataTables_info:last-child,
+.dataTables_footer .dataTables_paginate:last-child {
+  padding-right: 14px;
+}
+.dataTables_footer .dataTables_paginate .paginate_button {
+  padding: 0;
+}
+#change-password-form {
+  font-size: 16px;
+  font-weight: normal;
+}
+#change-password-form label {
+  line-height: 1.4;
+}
+#service-password-button {
+  margin: 16px 24px 16px 0;
 }
 .actions {
   position: absolute;
@@ -298,14 +568,14 @@ body.sign_up .actions.ng-enter {
     top: 20px;
     width: 418px;
   }
-  ul {
+  nav ul {
     transform: skew(-22.5deg);
     padding-left: 20px;
     padding-right: 30px;
     margin-left: 15px;
     margin-right: -15px;
   }
-  ul li a {
+  nav ul li a {
     transform: skew(22.5deg);
   }
 }
@@ -317,4 +587,7 @@ body.sign_up .actions.ng-enter {
     margin-left: 0;
     left: 13%;
   }
+}
+.pull-right {
+  float: right;
 }

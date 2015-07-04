@@ -46,6 +46,7 @@
     <!-- concatenate and minify for production -->
     <link rel="stylesheet" href="bower_components/HTML5-Reset/assets/css/reset.css" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/webfont.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -90,12 +91,19 @@
     </ul>
 </nav>
 <header ui-view="header"></header>
-<section ui-view="body"></section>
+<section id="body" ui-view="body"></section>
 <footer>
     <p>&copy; 2015 Railgun</p>
-    <p>Designed By <a href="http://www.qzworld.net">LTS</a></p>
+    <p>Designed By <a rel="nofollow" href="http://www.qzworld.net">LTS</a></p>
 </footer>
-
+<script src="bower_components/crypto-js/core.js"></script>
+<script src="bower_components/crypto-js/md5.js"></script>
+<script src="bower_components/humanize/humanize.js"></script>
+<script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="bower_components/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+<script src="bower_components/jsTimezoneDetect/jstz.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-messages/angular-messages.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.min.js"></script>
@@ -104,6 +112,13 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-cookie/angular-cookie.js"></script>
 <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
+<script src="bower_components/angular-adaptive-detection/angular-adaptive-detection.min.js"></script>
+<!--<script src="bower_components/marked/lib/marked.js"></script>
+<script src="bower_components/angular-marked/angular-marked.js"></script>-->
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/showdown/compressed/Showdown.min.js"></script>
+<script src="bower_components/angular-markdown-directive/markdown.js"></script>
+<script src="bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
 <script src="app/app.js"></script>
 
 </body>

@@ -1,0 +1,54 @@
+<h2 ng-if="platform"> Windows - HTTP 代理自动配置脚本 </h2>
+
+<div ng-if="platform" id="current-platform" class="my-section">
+    <i id="current-platform-logo" class="left device" ng-class="'icon-' + platform"></i>
+    <div id="current-platform-tutorial" ng-include="'docs/' + platform + '.simple.html'"></div>
+</div>
+<div id="current-platform-detail">
+    <a ui-sref="'my.'+platform">查看 Windows 的其他连接方式</a>
+</div>
+
+<h2>其他设备</h2>
+
+<div class="my-section">
+    <ul>
+        <li><a href='#/panel/help/windows/https' class="icon-android">Android</a></li>
+        <li><a class="icon-apple">OS X</a></li>
+        <li><a class="icon-apple">iOS</a></li>
+        <li><a class="icon-windows">Windows</a></li>
+        <li><a class="icon-windows">Windows Phone</a></li>
+        <li><a class="icon-linux">Linux</a></li>
+        <li><a class="icon-chrome">Chrome OS</a></li>
+        <li><a class="icon-wifi">路由器</a></li>
+    </ul>
+</div>
+
+
+
+<h2>需要特别处理的软件</h2>
+
+<div class="my-section">
+    <ul>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+        <li><a class="icon-cog-alt">软件</a></li>
+    </ul>
+</div>
+
+<h2>个人</h2>
+
+<div class="my-section">
+    <ul>
+        <li><a class="icon-cog-alt">安全</a></li>
+        <li><a class="icon-cog-alt">财务</a></li>
+        <li><a class="icon-cog-alt">子账号</a></li>
+    </ul>
+</div>

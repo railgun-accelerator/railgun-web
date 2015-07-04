@@ -1,0 +1,56 @@
+<md-card>
+    <md-card-content>
+        <h2 class="md-title">修改登录密码</h2>
+
+        <form id="change-password-form">
+            <md-input-container>
+                <label>旧密码</label>
+                <input type="password" ng-model="user.company">
+            </md-input-container>
+            <md-input-container>
+                <label>新密码</label>
+                <input type="password" ng-model="user.submissionDate">
+            </md-input-container>
+            <md-input-container>
+                <label>密码确认</label>
+                <input type="password" ng-model="user.submissionDate">
+            </md-input-container>
+            <md-button class="md-primary md-raised pull-right">提交</md-button>
+        </form>
+    </md-card-content>
+</md-card>
+
+
+<md-card>
+    <div id="service-password-wrapper">
+        <div class="dataTables_title">服务密码</div>
+        <table id="service-password-table" class="dataTable row-border hover no-footer">
+            <tbody>
+            <tr>
+                <td>VPN 密码</td>
+                <td>29998</td>
+                <td class="hint">所有 VPN 协议共用同一密码</td>
+            </tr>
+            <tr>
+                <td>HTTP 代理 端口号</td>
+                <td>29998</td>
+                <td class="hint">代理自动配置文件地址 http://p.lv5.ac/h29998.pac</td>
+            </tr>
+            <tr>
+                <td>HTTPS 代理 端口号</td>
+                <td>29999</td>
+                <td class="hint"></td>
+            </tr>
+            </tbody>
+        </table>
+        <md-button id="service-password-button" class="md-primary md-raised pull-right">重置密码</md-button>
+    </div>
+</md-card>
+
+
+<md-card>
+    <table datatable dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover"></table>
+</md-card>
+<p>正在进行中的 VPN 会话，流量数据不显示，非正常断开的 VPN 会话，终止时间和时长计算可能有误。</p>
+<p>来源地区使用 MaxMind 公司的 GeoLite2 数据，可以在此获取：<a href="http://www.maxmind.com">http://www.maxmind.com</a>.</p>
+<p>如果发现可疑访问，请修改登录密码和服务密码。</p>

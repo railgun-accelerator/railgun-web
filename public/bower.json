@@ -21,6 +21,15 @@
     "angular-ui-router": "~0.2.15",
     "HTML5-Reset": "~2.1.2",
     "angular-messages": "~1.4.0",
-    "ng-token-auth": "~0.0.25"
+    "ng-token-auth": "~0.0.25",
+    "angular-adaptive-detection": "~0.4.1",
+    "angular-marked": "~0.0.15",
+    "angular-markdown-directive": "~0.3.1",
+    "crypto-js": "~3.1.5",
+    "angular-datatables": "~0.4.3",
+    "datatables-plugins": "~1.10.7",
+    "moment-timezone": "~0.4.0",
+    "humanize": "~0.0.9",
+    "jsTimezoneDetect": "~1.0.6"
   }
 }

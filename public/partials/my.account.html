@@ -1,0 +1,188 @@
+<md-card>
+    <div class="dataTables_title">账户余额</div>
+    <table id="service-password-table" class="dataTable row-border hover no-footer">
+        <tbody>
+        <tr>
+            <td>账户余额</td>
+            <td>0.00</td>
+            <td class="hint">要使用套餐 Level 4，请充值至少 50.00 元</td>
+        </tr>
+        <tr>
+            <td>未结算金额</td>
+            <td>12.00 and counting</td>
+            <td class="hint">将在下次结算时从账户中扣除</td>
+        </tr>
+        </tbody>
+    </table>
+</md-card>
+
+<md-card>
+    <md-card-content>
+        <h2 class="md-title">充值</h2>
+
+        <form class="form-horizontal" id="payment-form" action="https://railgun.ac/payments" method="POST"
+              target="_blank">
+            <div class="form-group">
+                <label class="payment-label" for="payment-amount">充值金额</label>
+
+                <div class="payment-value">
+                    <input id="payment-amount" name="amount" type="number" min="0.01" max="500.00" step="0.01"
+                           class="form-control">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="payment-label">支付方式</label>
+
+                <div class="payment-value">
+                    <input id="payment-paypal" type="radio" name="method" value="paypal"/><label
+                        class="payment-method-label" for="payment-paypal"
+                        style="background-image: url('/assets/images/pay/paypal.png')"></label>
+                    <input id="payment-unionpay" type="radio" name="method" value="unionpay"/><label
+                        class="payment-method-label" for="payment-unionpay"
+                        style="background-image: url('/assets/images/pay/unionpay.png')"></label>
+                    <input id="payment-alipay" type="radio" name="method" value="alipay"/><label
+                        class="payment-method-label" for="payment-alipay"
+                        style="background-image: url('/assets/images/pay/alipay.png')"></label>
+                    <a ng-show="!showmore" ng-click="showmore = true" class="payment-method-label">更多</a>
+                    <input ng-show="showmore" id="payment-tenpay" type="radio" name="method" value="tenpay"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-tenpay"
+                        style="background-image: url('/assets/images/pay/tenpay.png')"></label>
+
+                    <p>注: PayPal 会向我们收取高昂的手续费，因此您的 PayPal 付款将会以 1 USD = 6 RMB 的比例加入账户余额。</p>
+                    <input ng-show="showmore" id="payment-ABC" type="radio" name="method" value="ABC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-ABC"
+                        style="background-image: url('/assets/images/pay/ABC.png')"></label>
+                    <input ng-show="showmore" id="payment-BOB" type="radio" name="method" value="BOB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-BOB"
+                        style="background-image: url('/assets/images/pay/BOB.gif')"></label>
+                    <input ng-show="showmore" id="payment-BOC" type="radio" name="method" value="BOC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-BOC"
+                        style="background-image: url('/assets/images/pay/BOC.png')"></label>
+                    <input ng-show="showmore" id="payment-CCB" type="radio" name="method" value="CCB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CCB"
+                        style="background-image: url('/assets/images/pay/CCB.png')"></label>
+                    <input ng-show="showmore" id="payment-CEB" type="radio" name="method" value="CEB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CEB"
+                        style="background-image: url('/assets/images/pay/CEB.png')"></label>
+                    <input ng-show="showmore" id="payment-CIB" type="radio" name="method" value="CIB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CIB"
+                        style="background-image: url('/assets/images/pay/CIB.gif')"></label>
+                    <input ng-show="showmore" id="payment-CITIC" type="radio" name="method" value="CITIC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CITIC"
+                        style="background-image: url('/assets/images/pay/CITIC.png')"></label>
+                    <input ng-show="showmore" id="payment-CMB" type="radio" name="method" value="CMB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CMB"
+                        style="background-image: url('/assets/images/pay/CMB.png')"></label>
+                    <input ng-show="showmore" id="payment-CMBC" type="radio" name="method" value="CMBC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-CMBC"
+                        style="background-image: url('/assets/images/pay/CMBC.gif')"></label>
+                    <input ng-show="showmore" id="payment-COMM" type="radio" name="method" value="COMM"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-COMM"
+                        style="background-image: url('/assets/images/pay/COMM.png')"></label>
+                    <input ng-show="showmore" id="payment-GDB" type="radio" name="method" value="GDB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-GDB"
+                        style="background-image: url('/assets/images/pay/GDB.png')"></label>
+                    <input ng-show="showmore" id="payment-ICBC" type="radio" name="method" value="ICBC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-ICBC"
+                        style="background-image: url('/assets/images/pay/ICBC.png')"></label>
+                    <input ng-show="showmore" id="payment-PAB" type="radio" name="method" value="PAB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-PAB"
+                        style="background-image: url('/assets/images/pay/PAB.png')"></label>
+                    <input ng-show="showmore" id="payment-POSTGC" type="radio" name="method" value="POSTGC"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-POSTGC"
+                        style="background-image: url('/assets/images/pay/POSTGC.png')"></label>
+                    <input ng-show="showmore" id="payment-SPDB" type="radio" name="method" value="SPDB"/><label
+                        ng-show="showmore" class="payment-method-label" for="payment-SPDB"
+                        style="background-image: url('/assets/images/pay/SPDB.png')"></label>
+                    <a ng-show="showmore" class="payment-method-label" href="https://support.railgun.ac/"
+                       target="_blank">更多</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="payment-label"></label>
+
+                <div class="payment-value">
+                    <input type="submit" class="md-primary md-raised md-button md-default-theme" value="充值">
+                </div>
+            </div>
+        </form>
+    </md-card-content>
+</md-card>
+
+
+<md-card>
+    <div class="dataTables_title">进行中的付款</div>
+    <table id="ongoing-payment" class="dataTable row-border dt-left no-footer">
+        <thead>
+        <tr>
+            <th class="dt-left">订单号</th>
+            <th class="dt-left">发起时间</th>
+            <th class="dt-right">金额</th>
+            <th class="dt-left">支付方式</th>
+            <th class="dt-left">状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="dt-left">1</td>
+            <td class="dt-left">2015-07-03 13:04:28</td>
+            <td class="dt-right">12.00</td>
+            <td class="dt-left">支付宝</td>
+            <td class="dt-left">等待支付</td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="ongoing-payment-hint">
+        <p>您有正在进行中的订单，要发起新的充值，请先完成或取消这个订单。</p>
+
+        <p>如果您已经支付但是这里仍然显示等待支付，请提交工单并提供订单号。</p>
+    </div>
+    <div class="md-actions" layout="row" layout-align="end center">
+        <md-button class="md-primary">取消订单</md-button>
+        <md-button class="md-primary">支付</md-button>
+    </div>
+</md-card>
+
+
+<md-card>
+    <table datatable dt-options="dtOptions" class="row-border hover">
+        <thead>
+        <tr>
+            <th class="dt-left">交易号</th>
+            <th class="dt-left">时间</th>
+            <th class="dt-left">类型</th>
+            <th class="dt-right">金额</th>
+            <th class="dt-right">余额</th>
+            <th class="dt-left">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="dt-left">3</td>
+            <td class="dt-left">2015-07-02 15:19:50</td>
+            <td class="dt-left">充值</td>
+            <td class="dt-right">10.00</td>
+            <td class="dt-right">9.99</td>
+            <td class="dt-left">支付宝 #222222</td>
+        </tr>
+        <tr>
+            <td class="dt-left">2</td>
+            <td class="dt-left">2015-07-02 15:19:50</td>
+            <td class="dt-left">消费</td>
+            <td class="dt-right">-10.01</td>
+            <td class="dt-right">-0.01</td>
+            <td class="dt-left">月结</td>
+        </tr>
+        <tr>
+            <td class="dt-left">1</td>
+            <td class="dt-left">2015-07-02 15:19:50</td>
+            <td class="dt-left">充值</td>
+            <td class="dt-right">10.00</td>
+            <td class="dt-right">10.00</td>
+            <td class="dt-left">支付宝 #123456</td>
+        </tr>
+        </tbody>
+    </table>
+</md-card>
