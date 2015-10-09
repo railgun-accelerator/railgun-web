@@ -44,7 +44,7 @@
         abstract: true,
         templateUrl: "partials/my.tutorial.html"
       }).state('my.tutorial.windows', {
-        url: "^/my",
+        url: "^/my/windows",
         templateUrl: "docs/windows.html"
       }).state('my.plan', {
         url: "^/my/plan",
@@ -73,24 +73,13 @@
   ]).controller("SignInController", [
     '$scope', '$auth', '$state', function($scope, $auth, $state) {
       return $scope.sign_in = function(user) {
-        console.log(1);
-        return $auth.submitLogin(user).then(function(response) {
-          return $state.go('my.index');
-        })["catch"](function(response) {
-          return console.log(response);
-        });
+        return alert('系统还没写好呢喵，申请内测账号或使用遇到问题请邮件至 support@railgun.ac');
       };
     }
   ]).controller('SignUpController', [
     '$scope', '$auth', '$state', function($scope, $auth, $state) {
-      console.log($scope);
       return $scope.sign_up = function(user) {
-        return $auth.submitRegistration(user).then(function(response) {
-          alert('已发送注册邮件');
-          return $state.go('my.index');
-        })["catch"](function(response) {
-          return console.log(response);
-        });
+        return alert('系统还没写好呢喵，申请内测账号或使用遇到问题请邮件至 support@railgun.ac');
       };
     }
   ]).controller('MyController', [

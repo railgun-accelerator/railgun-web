@@ -43,7 +43,7 @@ angular.module 'Railgun', ['ngMaterial', 'ngMessages', 'ui.router', 'ng-token-au
         templateUrl: "partials/my.tutorial.html"
       })
     .state('my.tutorial.windows', {
-        url: "^/my",
+        url: "^/my/windows",
         templateUrl: "docs/windows.html"
       })
     .state('my.plan', {
@@ -76,23 +76,25 @@ angular.module 'Railgun', ['ngMaterial', 'ngMessages', 'ui.router', 'ng-token-au
 ]
 .controller "SignInController", ['$scope', '$auth', '$state', ($scope, $auth, $state) ->
   $scope.sign_in = (user)->
-    console.log(1)
-    $auth.submitLogin(user)
-    .then (response)->
-      $state.go('my.index')
-    .catch (response)->
-      console.log response
+    #$auth.submitLogin(user)
+    alert('系统还没写好呢喵，申请内测账号或使用遇到问题请邮件至 support@railgun.ac')
+    #.then (response)->
+    #  $state.go('my.index')
+    #.catch (response)->
+    #  console.log response
 ]
 
 .controller 'SignUpController', ['$scope', '$auth', '$state', ($scope, $auth, $state)->
-  console.log $scope
   $scope.sign_up = (user)->
-    $auth.submitRegistration(user)
-    .then (response)->
-      alert('已发送注册邮件');
-      $state.go('my.index')
-    .catch (response)->
-      console.log response
+    alert('系统还没写好呢喵，申请内测账号或使用遇到问题请邮件至 support@railgun.ac')
+    #$auth.submitRegistration(user)
+    #.then (response)->
+    #  null
+      #alert('已发送注册邮件');
+      #$state.go('my.index')
+    #.catch (response)->
+    #  null
+      #console.log response
 #  $scope.status = 'input'
 #  $scope.submit = (user)->
 #    $scope.status = 'loading'

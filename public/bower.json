@@ -30,6 +30,7 @@
     "datatables-plugins": "~1.10.7",
     "moment-timezone": "~0.4.0",
     "humanize": "~0.0.9",
-    "jsTimezoneDetect": "~1.0.6"
+    "jsTimezoneDetect": "~1.0.6",
+    "material-design-icons": "~2.0.0"
   }
 }

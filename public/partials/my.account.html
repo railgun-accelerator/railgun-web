@@ -1,6 +1,6 @@
 <md-card>
     <div class="dataTables_title">账户余额</div>
-    <table id="service-password-table" class="dataTable row-border hover no-footer">
+    <table id="service-password-table" class="dataTable row-border no-footer">
         <tbody>
         <tr>
             <td>账户余额</td>
@@ -113,7 +113,11 @@
 
 
 <md-card>
-    <div class="dataTables_title">进行中的付款</div>
+    <div class="dataTables_title">充值</div>
+    <div id="ongoing-payment-hint">
+        <p>您有正在进行中的订单，要发起新的充值，请先完成或取消这个订单。</p>
+        <p>如果您已经支付但是这里仍然显示等待支付，请提交工单并提供订单号。</p>
+    </div>
     <table id="ongoing-payment" class="dataTable row-border dt-left no-footer">
         <thead>
         <tr>
@@ -134,11 +138,6 @@
         </tr>
         </tbody>
     </table>
-    <div id="ongoing-payment-hint">
-        <p>您有正在进行中的订单，要发起新的充值，请先完成或取消这个订单。</p>
-
-        <p>如果您已经支付但是这里仍然显示等待支付，请提交工单并提供订单号。</p>
-    </div>
     <div class="md-actions" layout="row" layout-align="end center">
         <md-button class="md-primary">取消订单</md-button>
         <md-button class="md-primary">支付</md-button>

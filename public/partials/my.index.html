@@ -1,12 +1,38 @@
-<h2 ng-if="platform"> Windows - HTTP 代理自动配置脚本 </h2>
+<!--<h2 ng-if="platform"> Windows - HTTP 代理自动配置脚本 </h2>
 
 <div ng-if="platform" id="current-platform" class="my-section">
-    <i id="current-platform-logo" class="left device" ng-class="'icon-' + platform"></i>
+
     <div id="current-platform-tutorial" ng-include="'docs/' + platform + '.simple.html'"></div>
 </div>
 <div id="current-platform-detail">
     <a ui-sref="'my.'+platform">查看 Windows 的其他连接方式</a>
+</div>-->
+<md-card>
+    <div class="dataTables_title">HTTP 代理自动配置脚本</div>
+    <table class="dataTable row-border no-footer">
+        <tbody>
+        <tr>
+            <td>使用自动配置脚本</td>
+            <td>√</td>
+            <td class="hint">不勾选 自动发现配置 和 使用代理服务器</td>
+        </tr>
+        <tr>
+            <td>地址</td>
+            <td>http://p.lv5.ac/h12345.pac</td>
+            <td class="hint">不要泄露，分享账号请用子账号功能</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="md-actions" layout="row" layout-align="start center">
+        <md-button class="md-primary">查看 Windows 的更多连接方式</md-button>
+        <md-button class="md-primary">查看更多平台和软件</md-button>
+    </div>
+</md-card>
+<div layout="row">
+    <div><i id="current-platform-logo" class="left device" ng-class="'icon-' + platform"></i></div>
+
 </div>
+
 
 <h2>其他设备</h2>
 
@@ -49,6 +75,7 @@
     <ul>
         <li><a class="icon-cog-alt">安全</a></li>
         <li><a class="icon-cog-alt">财务</a></li>
+        <li><a class="icon-cog-alt">套餐</a></li>
         <li><a class="icon-cog-alt">子账号</a></li>
     </ul>
 </div>

@@ -15,7 +15,10 @@
                 <label>密码确认</label>
                 <input type="password" ng-model="user.submissionDate">
             </md-input-container>
-            <md-button class="md-primary md-raised pull-right">提交</md-button>
+
+            <div class="md-actions" layout="row" layout-align="end center">
+                <md-button class="md-primary">提交</md-button>
+            </div>
         </form>
     </md-card-content>
 </md-card>
@@ -28,22 +31,24 @@
             <tbody>
             <tr>
                 <td>VPN 密码</td>
-                <td>29998</td>
+                <td>19998</td>
                 <td class="hint">所有 VPN 协议共用同一密码</td>
             </tr>
             <tr>
                 <td>HTTP 代理 端口号</td>
-                <td>29998</td>
-                <td class="hint">代理自动配置文件地址 http://p.lv5.ac/h29998.pac</td>
+                <td>19998</td>
+                <td class="hint">代理自动配置文件地址 http://p.lv5.ac/h19998.pac</td>
             </tr>
             <tr>
                 <td>HTTPS 代理 端口号</td>
-                <td>29999</td>
+                <td>19999</td>
                 <td class="hint"></td>
             </tr>
             </tbody>
         </table>
-        <md-button id="service-password-button" class="md-primary md-raised pull-right">重置密码</md-button>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button class="md-primary">重置密码</md-button>
+        </div>
     </div>
 </md-card>
 

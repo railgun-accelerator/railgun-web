@@ -357,10 +357,11 @@ a.payment-method-label
   &.ng-animate
     transition none
 #ongoing-payment-hint
-  color #737373
-  margin 24px 24px 0 24px
+  margin 8px 24px 2px 24px;
   font-size: 14px;
 table.dataTable
+  clear: both;
+  width 100%
   thead
     th
       padding 22px 24px
@@ -370,6 +371,23 @@ table.dataTable
       border-bottom: 1px solid #ddd;
       &.sorting_desc, &.sorting_asc
         color rgba(0,0,0,0.87)
+    .sorting
+      background-image none
+    .sorting:hover
+      background-image url('/assets/images/sort_both.png')
+    .sorting_asc
+      background-image url('/assets/images/sort_asc.png')
+    .sorting_desc
+      background-image url('/assets/images/sort_desc.png')
+    .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 16px;
+      background-origin content-box
+      &.dt-right
+        background-position: left center;
+    th:active, td:active
+      outline: none;
   tbody
     td
       padding 17.5px 24px
@@ -381,33 +399,42 @@ table.dataTable
         font-size 12px
       /*thead .sorting
         background-image: url("https://railgun.ac/bower_components/datatables/media/css/../images/sort_both.png");*/
-    tr:hover
-      background-color #EEEEEE
-  .row-border, .display
+  th.dt-left, td.dt-left
+    text-align: left;
+  th.dt-right, td.dt-right
+    text-align: right;
+  &.no-footer
+    border-bottom: 1px solid #ddd;
+  &.row-border, &.display
     tbody th, tbody td
       border-top: 1px solid #ddd;
     tbody tr:first-child
       th, td
         border-top: none;
-  &.no-footer
-    border-bottom: 1px solid #ddd;
+  &.hover, &.display
+    tbody tr:hover
+      background-color #EEEEEE
+.dataTables_wrapper.no-footer div.dataTables_scrollHead table, .dataTables_wrapper.no-footer div.dataTables_scrollBody table
+  border-bottom: none;
 .dataTables_wrapper.no-footer .dataTables_scrollBody
   border-bottom: 1px solid #ddd;
   box-sizing: content-box;
+.dataTables_wrapper .dataTables_filter
+    float: right;
+    text-align: right;
+    font-size 12px
+    font-family: Roboto
+    font-weight normal
+    color rgba(0,0,0,0.54)
+    padding 16px 14px 16px 0
+    input
+      line-height: 18px;
 .dataTables_title
   padding: 16px;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.005em;
   float: left;
-.dataTables_filter
-  font-size 12px
-  font-family: Roboto
-  font-weight normal
-  color rgba(0,0,0,0.54)
-  padding 16px 14px 16px 0
-  input
-    line-height: 18px;
 .dataTables_footer
   text-align: right;
   line-height 24px
@@ -479,5 +506,11 @@ body.sign_in, body.sign_up
 
 
 //util
+.pull-left
+  float: left
 .pull-right
   float: right
+
+.tutorial-section
+  clear: both
+  border-bottom 1px solid rgba(0,0,0,0.14);
