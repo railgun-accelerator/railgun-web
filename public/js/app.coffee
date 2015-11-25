@@ -167,6 +167,10 @@ $('#pay').submit (event)->
   event.preventDefault()
   $('#pay input[type=submit]').prop("disabled", true)
   payment = @payment.value
+  if payment == 'paypal' and parseFloat(@amount.value) < 15
+    alert '由于Paypal 会向我们收取高昂的手续费, 我们仅支持单笔 ￥15 ($2.4) 以上的充值金额使用 Paypal 付款.'
+    $('#pay input[type=submit]').prop("disabled", false)
+    return
   if payment == 'code'
     $.ajax
       url: "/api/code/#{@code.value}?token=#{store.get('token')}",
