@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0",
+    "jspm": "^0.16.15"
+  },
+  "jspm": {
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.8",
+      "angular-material": "github:angular/bower-material@^0.11.4",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
+      "text": "github:systemjs/plugin-text@^0.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
