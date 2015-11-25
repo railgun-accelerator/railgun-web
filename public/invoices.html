@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Railgun</title>
+</head>
+<body>
+<h2>充值</h2>
+<form id="pay" novalidate>
+    <label id="pay_amount">金额 ￥<input name="amount" type="number" step="0.01"></label>
+    <label id="pay_code" hidden>优惠码<input name="code" type="text"></label>
+    <br/>
+    <label>付款方式
+        <label><input name="payment" type="radio" value="alipay" checked>支付宝</label>
+        <!--<label><input name="payment" type="radio" value="paypal">Paypal</label>-->
+        <label><input name="payment" type="radio" value="code">优惠码</label>
+    </label> <br/>
+    <input type="submit">
+</form>
+
+<p>支付宝由于目前我只申请到了担保交易接口, 用支付宝付款后请进入支付宝我的账单执行 "确认收货" 操作</p>
+<!--<p>Paypal 使用美元结算, 充值汇率固定为 6.25.</p>-->
+<br>
+<p>现在这个系统刚刚上线, 出现各种诸如计费不准或者天价账单之类的 bug 的话不要惊慌.</p>
+<p>如果充值或计费出现问题, 或者你希望使用别的付款方式, 请联系 <a href="mailto:support@railgun.ac">support@railgun.ac</a> </p>
+<div id="billing_date_wrapper" hidden>
+    <h2>账单日</h2>
+    <p>每月<span id="billing_date"></span>日</p>
+</div>
+<h2>账单历史</h2>
+<table>
+    <thead>
+    <tr>
+        <th>类型</th>
+        <th>金额</th>
+        <th>状态</th>
+        <th>创建时间</th>
+        <th>完成时间</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="invoices"></tbody>
+</table>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/hogan-3.0.2.min.js"></script>
+<script src="js/marked.min.js"></script>
+<script src="js/store.min.js"></script>
+<script src="js/URI.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

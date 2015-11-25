@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Railgun</title>
+</head>
+<body>
+<form id="change_plan">
+    您所在的地区: <br/>
+    <label><input name="zone_id" type="radio" value="h" checked>中国</label><br/>
+    <label><input name="zone_id" type="radio" value="j">亚太</label><br/>
+    <label><input name="zone_id" type="radio" value="a">北美</label><br/>
+    <p>中国大陆用户请选择中国, 港澳台及周边国家/地区用户请选择亚太.</p>
+    <p>更改地区会自动重置服务密码, 请参照连接说明修改设备上的代理/VPN设置.</p>
+    <br/><br/>
+    套餐:
+    <div id="plans"></div>
+    <p>升级套餐立即生效, 降级套餐下月生效. 超出部分流量 3元/G. </p>
+    <p>如果不知道自己将会用多少流量, 建议选最小的, 可以随时升级. </p>
+    <input type="submit">
+
+</form>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/hogan-3.0.2.min.js"></script>
+<script src="js/marked.min.js"></script>
+<script src="js/store.min.js"></script>
+<script src="js/URI.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
