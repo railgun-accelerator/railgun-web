@@ -5,12 +5,12 @@
     <title></title>
 </head>
 <body data-ui-view>
-<a data-ui-sref="tos"></a>
+<a data-ui-sref="tos">aacd</a>
 </body>
 <!-- public/index.html -->
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
 <script>
-    System.import('source/bootstrap').then(function(module) {
-        console.log(module)
-    })
+    System.import('source/app.js')
 </script>
 </html>
