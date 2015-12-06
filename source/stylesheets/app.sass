@@ -1,0 +1,69 @@
+@import '/fonts/masochist-collection.css'
+
+html
+  font-family: 'Source Sans Pro', 'Microsoft JhengHei', "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif
+body
+  -webkit-font-smoothing: subpixel-antialiased
+header
+  background: url('/images/title.png'), -webkit-linear-gradient(90deg, #5c00ff, #410cc7)
+  position: relative
+  height: 500px
+  color: white
+
+  #index-header
+    position: absolute
+    text-align: center
+    margin: auto
+    left: 0
+    right: 40%
+    top: 100px
+    h1
+      font-size: 40px
+      line-height: 60px
+    .subtitle
+      font-size: 15px
+      line-height: 40px
+    .sign_button_group
+      width: 200px
+      margin: 15px auto
+      border: 1px white solid
+      border-radius: 3px
+      font-size: 12px
+      a
+        width: 76px
+        padding: 12px
+        display: block
+        color: inherit
+        text-decoration: none
+        transition: background-color 0.3s
+        &:hover
+          color: #4e06e1
+          background: white
+#features
+  padding: 0 5% 0 5%
+  list-style: none
+  text-align: center
+  li
+    margin: 0 5% 0 5%
+    .title
+      margin: 0
+      font-size: 30px
+      line-height: 50px
+      color: #1a0b3d
+    .description
+      margin: 5px 0 0 0
+      font-size: 14px
+      line-height: 25px
+      color: #301d5f
+    &::before
+      font-size: 90px
+      color: #5f25ee
+      display: block
+      margin: auto
+
+footer
+  font-size: 12px
+  line-height: 8px
+  background: #c0b5d3
+  padding: 8px 30px
+  color: #3c324d

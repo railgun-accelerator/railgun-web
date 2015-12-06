@@ -43,7 +43,6 @@
   "github:angular-ui/ui-router@0.2.15": {
     "angular": "jspm:angular@^1.3.2"
   },
-  "github:systemjs/plugin-css@0.1.19": {},
   "github:angular/bower-angular-aria@1.4.8": {
     "angular": "jspm:angular@^1.3.0"
   },
@@ -56,5 +55,8 @@
     "angular-aria": "github:angular/bower-angular-aria@^1.3.15",
     "css": "github:systemjs/plugin-css@^0.1.9"
   },
-  "github:systemjs/plugin-text@0.0.3": {}
+  "github:systemjs/plugin-text@0.0.3": {},
+  "github:systemjs/plugin-css@0.1.20": {},
+  "github:LeaVerou/prefixfree@gh-pages": {},
+  "github:adobe-fonts/source-sans-pro@release": {}
 }

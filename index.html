@@ -8,13 +8,28 @@
     <base href="/">
 </head>
 <body>
-    <header data-ui-view="header"></header>
-    <div data-ui-view="body"></div>
+<header ng-class="{logged_in: $state.includes('home.')}">
+    <!--<nav>
+        <ul>
+            <li class="nav_item"><a href="/">博客</a></li>
+            <li class="nav_item"><a href="/">支持</a></li>
+            <li class="nav_item"><a href="/">状态</a></li>
+        </ul>
+        <div data-ui-view="header"></div>
+    </nav>-->
+    <div data-ui-view="header"></div>
+</header>
+<div data-ui-view="body"></div>
+<footer>
+    <p>&copy; 2015 Railgun Accelerator</p>
+    <p>Designed By <a href="http://www.qzworld.net/">LTS</a></p>
+</footer>
 </body>
 <!-- public/index.html -->
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
 <script>
-    System.import('source/app.js')
+    System.import('source/app.js');
 </script>
+<link rel="stylesheet" href="assets/app.css" type="text/css">
 </html>
