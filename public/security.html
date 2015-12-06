@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>安全性须知</title>
+</head>
+<body>
+<ol>
+    <li>Railgun , 不是用于匿名安全访问的工具, 在用户接入的协议和内部服务器间的传输隧道的设计上会倾向于体验和速度而非安全性.</li>
+    <li>对于明文协议 (HTTP 代理, Socks 代理), 从用户到 Railgun 服务器的部分中间人能很容易进行劫持. HTTPS 代理和各类 VPN 协议可以用于简单应对运营商插广告, 咖啡馆公共 WiFi 邻居监听等简单攻击, 对于有针对性专业的攻击, 这些协议也不保证没有弱点. 其中 PPTP 和 shadowsocks 有已知的弱点.</li>
+    <li><b>请务必不要使用 Railgun 做需要高匿名性的事情, 也不推荐使用其他简单代理或VPN方案做这类事情.</b></li>
+    <li>如果网站本身使用了 HTTPS, 那么无论是否使用 Railgun 或其他代理, 中间人都无法获取或篡改通讯内容, 但是能够得知与那个网站发生了通讯这件事情本身.</li>
+    <li>客户端本机安全性是脆弱而容易被忽视的, 请务必关注在本机上安装的软件是否会留有后门, 特别是那些公认的流氓, 尽量不要跟 Railgun (以及其他代理服务) 一起使用</li>
+</ol>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/hogan-3.0.2.min.js"></script>
+<script src="js/marked.min.js"></script>
+<script src="js/store.min.js"></script>
+<script src="js/URI.js"></script>
+<script src="js/qrcode.min.js"></script>
+<script src="js/core-min.js"></script>
+<script src="js/enc-base64-min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

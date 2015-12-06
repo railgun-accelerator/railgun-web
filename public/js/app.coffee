@@ -9,11 +9,15 @@ i18n =
     3: 'Level 3'
     4: 'Level 4'
     5: 'Level 5'
+  price_plan:
+    1: '3'
+    3: '2.5'
+    4: '2'
   invoice_type:
     1: '充值'
     2: '流量消费'
     3: '套餐消费'
-    4: '优惠码'
+    4: '礼品卡'
     '-1': '充值撤销'
     '-3': '套餐撤销'
   invoice_status:
@@ -166,7 +170,7 @@ $('#pay input[name=payment]').change (event)->
 $('#pay').submit (event)->
   event.preventDefault()
   $('#pay input[type=submit]').prop("disabled", true)
-  payment = @payment.value
+  payment = $("#pay input[name='payment']:checked").val()
   if payment == 'paypal' and parseFloat(@amount.value) < 15
     alert '由于Paypal 会向我们收取高昂的手续费, 我们仅支持单笔 ￥15 ($2.4) 以上的充值金额使用 Paypal 付款.'
     $('#pay input[type=submit]').prop("disabled", false)
@@ -181,7 +185,7 @@ $('#pay').submit (event)->
       location.reload()
     .fail (jqXHR, textStatus, errorThrown)=>
       if jqXHR.status == 403
-        alert('优惠码不正确')
+        alert('礼品卡代码不正确或已过期')
       else
         alert('未知错误1')
       $('#pay input[type=submit]').prop("disabled", false)
@@ -191,14 +195,11 @@ $('#pay').submit (event)->
       type: 'POST'
       data: JSON.stringify
         amount: parseFloat(@amount.value) * 100
-        payment: @payment.value
+        payment: $("#pay input[name='payment']:checked").val()
       dataType: 'json'
       contentType: "application/json; charset=utf-8"
     .done (data, textStatus, jqXHR)=>
-      if payment in ['alipay']
-        location.href = 'http://pay.my-card.in/redirect?' + data[1]
-      else
-        location.href = data[1]
+      location.href = data[1]
     .fail (jqXHR, textStatus, errorThrown)=>
       if jqXHR.status == 400
         alert('金额不正确')
@@ -213,7 +214,7 @@ $('#invoices').on 'click', '.repay', (event)->
     dataType: 'json'
     contentType: "application/json; charset=utf-8"
   .done (data, textStatus, jqXHR)->
-    location.href = 'http://pay.my-card.in/redirect?' + data[1]
+    location.href = data[1]
   .fail (jqXHR, textStatus, errorThrown)->
     alert '发起付款失败'
 $('#change_password').submit (event)->
@@ -310,7 +311,7 @@ switch uri.path()
         plans_enabled = [2,3,4,5]
         data.sort (a,b)->if a.id < b.id then -1 else 1
         for plan in data when plan.id in plans_enabled
-          $("<label><input name=\"plan_id\" type=\"radio\" value=\"#{plan.id}\">#{plan.name}: ￥#{plan.price/100}/月/#{plan.traffic/1024/1024/1024}GB</label><br/>").appendTo '#plans'
+          $("<label><input name=\"plan_id\" type=\"radio\" value=\"#{plan.id}\">#{plan.name}: ￥#{plan.price/100}/月/#{plan.traffic/1024/1024/1024}GB, 超出流量 ￥#{i18n.price_plan[plan.price_plan]} / GB</label><br/>").appendTo '#plans'
         $('input[name=plan_id][value=2]').prop("checked", true)
       .fail (jqXHR, textStatus, errorThrown)->
         alert '未知错误'
@@ -346,7 +347,9 @@ switch uri.path()
               event.preventDefault()
               $.get "/tutorials/#{$(this).attr('data-platform')}.md.mustache", (data)->
                 template = Hogan.compile(data);
-                $('#tutorial').html marked template.render zone: user.zone, username: user.username, sub_password: user.sub_password, sub_password_2: parseInt(user.sub_password)+1, sub_password_3: parseInt(user.sub_password)+2
+                $('#tutorial').html marked template.render zone: user.zone, address: user.dns_info["#{user.zone}.lv5.ac"], dns_server: {'h':'10.8.0.1', 'a':'10.1.0.1', j:'10.9.0.1'}[user.zone], username: user.username, sub_password: user.sub_password, sub_password_2: parseInt(user.sub_password)+1, sub_password_3: parseInt(user.sub_password)+2, sub_password_4: parseInt(user.sub_password)+3
+                if document.getElementById("qrcode")
+                  new QRCode document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:railgun@#{user.zone}.lv5.ac:#{parseInt(user.sub_password)+3}"))
       .fail (jqXHR, textStatus, errorThrown)->
         $('#not_sign_in').show()
     else

@@ -22,11 +22,16 @@
       4: 'Level 4',
       5: 'Level 5'
     },
+    price_plan: {
+      1: '3',
+      3: '2.5',
+      4: '2'
+    },
     invoice_type: {
       1: '充值',
       2: '流量消费',
       3: '套餐消费',
-      4: '优惠码',
+      4: '礼品卡',
       '-1': '充值撤销',
       '-3': '套餐撤销'
     },
@@ -220,7 +225,7 @@
     var payment;
     event.preventDefault();
     $('#pay input[type=submit]').prop("disabled", true);
-    payment = this.payment.value;
+    payment = $("#pay input[name='payment']:checked").val();
     if (payment === 'paypal' && parseFloat(this.amount.value) < 15) {
       alert('由于Paypal 会向我们收取高昂的手续费, 我们仅支持单笔 ￥15 ($2.4) 以上的充值金额使用 Paypal 付款.');
       $('#pay input[type=submit]').prop("disabled", false);
@@ -237,7 +242,7 @@
       }).fail((function(_this) {
         return function(jqXHR, textStatus, errorThrown) {
           if (jqXHR.status === 403) {
-            alert('优惠码不正确');
+            alert('礼品卡代码不正确或已过期');
           } else {
             alert('未知错误1');
           }
@@ -250,17 +255,13 @@
         type: 'POST',
         data: JSON.stringify({
           amount: parseFloat(this.amount.value) * 100,
-          payment: this.payment.value
+          payment: $("#pay input[name='payment']:checked").val()
         }),
         dataType: 'json',
         contentType: "application/json; charset=utf-8"
       }).done((function(_this) {
         return function(data, textStatus, jqXHR) {
-          if (payment === 'alipay') {
-            return location.href = 'http://pay.my-card.in/redirect?' + data[1];
-          } else {
-            return location.href = data[1];
-          }
+          return location.href = data[1];
         };
       })(this)).fail((function(_this) {
         return function(jqXHR, textStatus, errorThrown) {
@@ -283,7 +284,7 @@
       dataType: 'json',
       contentType: "application/json; charset=utf-8"
     }).done(function(data, textStatus, jqXHR) {
-      return location.href = 'http://pay.my-card.in/redirect?' + data[1];
+      return location.href = data[1];
     }).fail(function(jqXHR, textStatus, errorThrown) {
       return alert('发起付款失败');
     });
@@ -433,7 +434,7 @@
           for (i = 0, len = data.length; i < len; i++) {
             plan = data[i];
             if (ref = plan.id, indexOf.call(plans_enabled, ref) >= 0) {
-              $("<label><input name=\"plan_id\" type=\"radio\" value=\"" + plan.id + "\">" + plan.name + ": ￥" + (plan.price / 100) + "/月/" + (plan.traffic / 1024 / 1024 / 1024) + "GB</label><br/>").appendTo('#plans');
+              $("<label><input name=\"plan_id\" type=\"radio\" value=\"" + plan.id + "\">" + plan.name + ": ￥" + (plan.price / 100) + "/月/" + (plan.traffic / 1024 / 1024 / 1024) + "GB, 超出流量 ￥" + i18n.price_plan[plan.price_plan] + " / GB</label><br/>").appendTo('#plans');
             }
           }
           return $('input[name=plan_id][value=2]').prop("checked", true);
@@ -474,13 +475,23 @@
                 return $.get("/tutorials/" + ($(this).attr('data-platform')) + ".md.mustache", function(data) {
                   var template;
                   template = Hogan.compile(data);
-                  return $('#tutorial').html(marked(template.render({
+                  $('#tutorial').html(marked(template.render({
                     zone: user.zone,
+                    address: user.dns_info[user.zone + ".lv5.ac"],
+                    dns_server: {
+                      'h': '10.8.0.1',
+                      'a': '10.1.0.1',
+                      j: '10.9.0.1'
+                    }[user.zone],
                     username: user.username,
                     sub_password: user.sub_password,
                     sub_password_2: parseInt(user.sub_password) + 1,
-                    sub_password_3: parseInt(user.sub_password) + 2
+                    sub_password_3: parseInt(user.sub_password) + 2,
+                    sub_password_4: parseInt(user.sub_password) + 3
                   })));
+                  if (document.getElementById("qrcode")) {
+                    return new QRCode(document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:railgun@" + user.zone + ".lv5.ac:" + (parseInt(user.sub_password) + 3))));
+                  }
                 });
               });
             }

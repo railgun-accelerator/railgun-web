@@ -9,7 +9,7 @@
 <h2>账号</h2>
 <div id="is_sign_in" hidden>
 <span id="username"></span> <a id="sign_out" href="#">退出登录</a>
-    <form id="resend-email" hidden><p>等待邮箱验证</p><input name="email" type="email"><input type="submit" value="重发验证邮件"></form>
+    <form id="resend-email" hidden><p>等待邮箱验证</p><input name="email" type="email"><input type="submit" value="发送验证邮件"></form>
     <dl id="email_confirmed" hidden>
         <dt>状态</dt>
         <dd id="status"></dd>
@@ -22,6 +22,7 @@
         <dt>本月已用流量</dt>
         <dd><span id="traffic_monthly_used"></span> / <span id="traffic_monthly_start"></span> GiB</dd>
         <dt>安全</dt>
+        <dd><a href="/security">[安全性须知]</a></dd>
         <dd><a href="/change_password">[修改登录密码]</a></dd>
         <dd><a id="change_sub_password" href="#">[重置服务密码]</a></dd>
         <dt>其他</dt>
@@ -53,6 +54,9 @@
 <script src="js/marked.min.js"></script>
 <script src="js/store.min.js"></script>
 <script src="js/URI.js"></script>
+<script src="js/qrcode.min.js"></script>
+<script src="js/core-min.js"></script>
+<script src="js/enc-base64-min.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
