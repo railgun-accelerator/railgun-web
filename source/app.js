@@ -1,9 +1,13 @@
 'use strict';
 
-import angular from 'angular';
-//import uiRouter from 'angular-ui/ui-router';
+import 'angular'
+import 'angular-ui-router'
 
+import IndexHeaderTemplate from './views/index.header.html!text'
+import IndexBodyTemplate from './views/index.body.html!text'
 import IndexTemplate from './views/index.html!text'
+import SignInTemplate from './views/sign_in.html!text'
+import SignUpTemplate from './views/sign_up.html!text'
 
 
 angular.module('app', ['ui.router'])
@@ -12,19 +16,25 @@ angular.module('app', ['ui.router'])
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('index', {
+                views: {
+                    "header": {template: IndexHeaderTemplate},
+                    "body": {template: IndexBodyTemplate},
+                }
+            })
+            .state('index.index', {
                 url: '/',
-                template: 'IndexTemplate'
+                template: IndexTemplate
             })
             .state('index.sign_in', {
-                url: '/sign_in',
-                template: 'SignInTemplate'
+                url: 'sign_in',
+                template: SignInTemplate
             });
 
     })
-    .run(run)
+    .run(() => {
+        console.log(1);
+    });
     //.controller('BaseCtrl', BaseCtrl);
 
 
-angular.element(document).ready(
-    () => angular.bootstrap(document, ['app'], {strictDi: true})
-);
+angular.bootstrap(document, ['app']);
