@@ -1,0 +1,13 @@
+{
+  "short_name": "电磁炮加速计划",
+  "name": "电磁炮加速计划",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}
