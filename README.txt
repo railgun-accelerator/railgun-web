@@ -7,3 +7,7 @@ jspm install
 ## local server
 
 gulp
+
+## clean
+
+rm -rf node_modules jspm_modules assets
