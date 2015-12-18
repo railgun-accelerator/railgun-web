@@ -1,0 +1,24 @@
+<div data-ng-include="tutorial"></div>
+<h2 data-ng-if="tutorial">其他平台连接说明</h2>
+<h2 data-ng-if="!tutorial">连接说明</h2>
+<ul>
+    <li><a data-ui-sref="home.tutorials({platform:'ios'})">iOS</a></li>
+    <li><a data-ui-sref="home.tutorials({platform:'android'})">Android</a></li>
+    <li><a data-ui-sref="home.tutorials({platform:'windows'})">Windows</a></li>
+    <li><a data-ui-sref="home.tutorials({platform:'osx'})">OS X</a></li>
+    <li><a data-ui-sref="home.tutorials({platform:'linux'})">Linux</a></li>
+    <li><a data-ui-sref="home.tutorials({platform:'expert'})">其他</a></li>
+</ul>
+<h2>个人</h2>
+<ul>
+    <li><a data-ui-sref="home.invoices">财务</a></li>
+    <li><a data-ui-sref="home.activities">安全</a></li>
+    <li><a href="#" data-ng-click="sign_out()">注销登录</a></li>
+</ul>
+<h2>其他</h2>
+<ul>
+    <li><a href="mailto:support@railgun.ac">支持</a></li>
+    <li><a href="https://plus.google.com/108228507100400076204">Google+</a></li>
+    <li><a href="#">服务条款</a></li>
+    <li><a href="#">安全性须知</a></li>
+</ul>

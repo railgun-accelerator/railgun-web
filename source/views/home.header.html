@@ -1,0 +1,18 @@
+<div id="user" data-layout="row">
+    <div flex="none">
+        <a data-ui-sref="home.index"><img id="avatar" data-ng-src="{{user.avatar}}"></a>
+    </div>
+    <div id="user-right" flex>
+        <div id="username-and-plan">
+            <a data-ui-sref="home.index" id="username">{{user.username}}</a>
+            <a id="zone" class="user-tag" data-ui-sref="home.invoices">{{'zone.'+user.zone | translate}}</a>
+            <a id="plan" class="user-tag" data-ui-sref="home.invoices">{{'plan.'+user.next_monthly_plan | translate}}</a>
+        </div>
+        <div id="user-statistics">
+            <a data-ui-sref="home.activities"><i class="fa fa-signal"></i><span>{{(user.traffic_month_used / 1024 / 1024 / 1024).toFixed(2)}} / {{(user.traffic_month_start / 1024 / 1024 / 1024)}} GB</span></a>
+            <a data-ui-sref="home.invoices"><i class="fa fa-calendar"></i><span>{{user.billing_date}}</span></a>
+            <a data-ui-sref="home.invoices"><i class="fa fa-yen"></i><span>{{user.traffic_remains / 100}}</span></a>
+            <a class="button" data-ui-sref="home.invoices">充值</a>
+        </div>
+    </div>
+</div>

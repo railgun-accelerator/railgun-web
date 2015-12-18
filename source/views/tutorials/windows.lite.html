@@ -1,0 +1,26 @@
+<h2>Windows 连接说明</h2>
+<h3>HTTP 代理自动配置脚本 (PAC)</h3>
+Internet Explorer &gt 工具(或齿轮图标) &gt Internet 选项 &gt 连接
+<ul>
+    <li>PPPoE 拨号上网：选择网络连接 &gt 设置
+    <li>路由器或 Wi-Fi 上网：局域网设置</li>
+</ul>
+<dl>
+<dt>使用自动配置脚本</dt>
+    <dd>√</dd>
+<dt>地址</dt>
+<dd>http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.pac</dd>
+</dl>
+
+<hr>或者
+<h3>VPN 自动配置脚本</h3>
+<p>下载 <a href="http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.bat">http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.bat</a> 并运行</p>
+<p>在系统托盘点击网络 &gt Railgun &gt 连接</p>
+<dt>用户名</dt>
+<dd>{{user.username}}</dd>
+<dt>密码</dt>
+<dd>{{user.sub_password}}</dd>
+</dl>
+<p>VPN 自动配置脚本支持 Windows 7 或更高版本。</p>
+<hr>或者
+<a data-ui-sref="home.tutorials({platform:'windows'})">查看详细连接说明及其他连接方式</a>

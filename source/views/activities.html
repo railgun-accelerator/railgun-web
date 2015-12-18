@@ -1,0 +1,45 @@
+<h2>修改登录密码</h2>
+登录密码是登录用户管理面板的密码，不是用于连接 VPN 的密码。
+<div data-layout="column"  ng-cloak>
+    <md-content layout-padding>
+        <form name="form" data-ng-submit="form.$valid && changePassword()">
+            <md-input-container class="md-block">
+                <label>旧密码</label>
+                <input required type="password" name="password" data-ng-model="user.password">
+                <div ng-messages="form.password.$error">
+                    <div ng-message="required">请填写旧密码</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>新密码</label>
+                <input required type="password" name="newpassword" data-ng-model="user.newpassword">
+                <div ng-messages="form.newpassword.$error">
+                    <div ng-message="required">请填写新密码</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>密码确认</label>
+                <input required type="password" name="confirm_password" data-ng-model="confirm_password" data-ui-validate=" '$value==user.newpassword' " data-ui-validate-watch=" 'newpassword' "  />
+                <div ng-messages="form.confirm_password.$error">
+                    <div ng-message="required">请再填写一次新密码</div>
+                    <div ng-message="validator">密码确认与新密码不同</div>
+                </div>
+            </md-input-container>
+            <md-button type="submit" class="md-raised md-primary">提交</md-button>
+        </form>
+    </md-content>
+</div>
+<h2>重置服务密码</h2>
+<p>如果您的代理端口号或 VPN 密码泄漏，可以在此进行重置。重置之后需要参照连接说明在设备上重新设置VPN和代理。</p>
+<md-button class="md-raised md-primary" ng-click="resetSubPassword()">重置服务密码</md-button>
+
+<h2>账户活动记录</h2>
+<dtable options="options" rows="data" class="material">
+    <column name="起始时间" prop="started_at" sort="desc">{{$cell | date: 'yyyy-MM-dd h:mm:ss'}}</column>
+    <column name="终止时间" prop="ended_at">{{$cell | date: 'yyyy-MM-dd h:mm:ss'}}</column>
+    <column name="流量" prop="traffic">{{$cell | humanizeFilesize}}</column>
+    <column name="协议" prop="protocol">{{'protocol.'+$cell | translate}}</column>
+    <column name="IP 地址" prop="client_address"></column>
+    <column name="地区" prop="location"></column>
+</dtable>
+<p>如果发现可疑访问，请重置服务密码。</p>

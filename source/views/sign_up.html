@@ -1,1 +1,24 @@
-sign
+<div class="clear index_form" id="sign_in_wrapper">
+    <h2>创建新账号</h2>
+
+    <!--<p class="warning">用户名不存在</p>-->
+
+    <form id="sign_up" data-ng-submit="submit()">
+        <input type="text" placeholder="用户名" name="username" data-ng-model="user.username" minlength="3" required/> <br>
+        <input type="password" placeholder="密码" name="password" data-ng-model="user.password" required/> <br>
+        <input type="password" placeholder="密码确认" name="password_verify" data-ng-model="user.password_confirm" ui-validate="'$value==1'" ui-validate-watch="'user.password'" required/> <br>
+        <input type="email" placeholder="Email" name="email" data-ng-model="user.email" required/> <br>
+        <input type="text" placeholder="邀请码" name="code" data-ng-model="user.code" required/> <br>
+        <label class="scheckbox">
+            <input type="checkbox" name="agree">我同意<a href="/tos" target="_blank">服务条款</a>
+        </label>
+
+        <!--<label class="scheckbox"><input type="checkbox" name="save">保存登录状态</label> <br>-->
+        <div id="sign-form-footer">
+            <div id="sign_action_button_group">
+                <input type="button" data-ui-sref="index.index" value="取消">
+                <input type="submit" value="注册">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+<h2>地区与套餐</h2>
+<form data-ng-submit="submit()" ng-cloak>
+    <p>地区</p>
+    <md-radio-group ng-model="zone_id">
+        <md-radio-button name="zone_id" ng-value="zone.id" ng-repeat="zone in zones">{{'zone.'+zone.id | translate}}</md-radio-button>
+    </md-radio-group>
+    <p>套餐</p>
+    <md-radio-group ng-model="plan_id">
+        <md-radio-button name="plan_id" ng-value="plan.id" ng-repeat="plan in plans">{{plan.name}}: {{plan.price/100 | currency:'¥':0}} / 月 / {{plan.traffic | humanizeFilesize:1024:0}}，超出流量 {{1024*1024*1024/price_plans[plan.price_plan].price/100 | currency}} / GB</md-radio-button>
+    </md-radio-group>
+    <md-button type="submit" class="md-raised md-primary">提交</md-button>
+</form>
+<h2>账户</h2>
+<table id="account">
+    <tbody>
+    <tr>
+        <td>余额</td>
+        <td>{{user.traffic_remains / 100 | currency}}</td>
+        <td>{{'status.'+user.status | translate}}</td>
+    </tr>
+    <tr data-ng-if="user.traffic_month_used - user.traffic_month_start > 0">
+        <td>超出流量</td>
+        <td>{{(user.traffic_month_used - user.traffic_month_start) | humanizeFilesize}}</td>
+        <td>折合 {{(user.traffic_month_used - user.traffic_month_start) / price_plans[user.price_plan].price / 100 | currency }}，将在下次结算时从余额中扣除</td>
+    </tr>
+    <tr>
+        <td>套餐周期</td>
+        <td>{{user.last_billing_day * 1000 | date: 'yyyy-MM-dd'}} ~ {{billing_expire | date: 'yyyy-MM-dd'}}</td>
+        <td>每月 {{user.billing_date}} 日重置套餐流量</td>
+    </tr>
+    </tbody>
+</table>
+<h2>充值</h2>
+<div data-layout="column" id="payment" ng-cloak>
+    <md-content layout-padding>
+        <form name="payment_form" data-ng-submit="payment.$valid && changePassword()">
+            <md-input-container class="md-block" ng-if="payment.payment != 'code'">
+                <label>金额</label>
+                <input required type="number" name="amount" step="0.01" min="0.01" data-ng-model="payment.amount">
+                <div ng-messages="payment_form.amount.$error">
+                    <div ng-message="required">请输入充值金额</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" ng-if="payment.payment == 'code'">
+                <label>礼品卡代码</label>
+                <input required type="text" name="code" data-ng-model="payment.code">
+                <div ng-messages="payment_form.code.$error">
+                    <div ng-message="required">请输入礼品卡代码</div>
+                </div>
+            </md-input-container>
+            <md-radio-group ng-model="payment.payment" layout="row">
+                <md-radio-button name="payment" value="alipay">支付宝</md-radio-button>
+                <md-radio-button name="payment" value="paypal">Paypal</md-radio-button>
+                <md-radio-button name="payment" value="code">礼品卡</md-radio-button>
+            </md-radio-group>
+            <md-button type="submit" class="md-raised md-primary">提交</md-button>
+        </form>
+    </md-content>
+</div>
+<h2>账单历史</h2>
+<dtable options="options" rows="data" class="material">
+    <column name="生成时间" prop="generate_time">{{$cell * 1000 | date: 'yyyy-MM-dd h:mm:ss'}}</column>
+    <column name="完成时间" prop="finish_time"><span ng-if="$cell">{{$cell * 1000 | date: 'yyyy-MM-dd h:mm:ss'}}</span></column>
+    <column name="类型" prop="type">{{'invoice_type.'+$cell | translate}}</column>
+
+    <column name="金额 (¥)" prop="amount"><span ng-if="$cell">{{$cell / 100 | currency:''}}</span></column>
+    <column name="状态" prop="status">{{'invoice_status.'+$cell | translate}}</column>
+    <column name="操作">1</column>
+</dtable>
+<p>nyaa</p>

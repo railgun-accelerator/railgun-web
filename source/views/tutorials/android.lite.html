@@ -1,0 +1,24 @@
+<h3>IPSec Hybrid RSA 始终开启的 VPN</h3>
+
+<ol>
+<li>设置 &gt 更多 &gt VPN &gt 添加 VPN 配置文件 (+)
+<dl>
+    <dt>名称</dt><dd>Railgun</dd>
+    <dt>类型</dt><dd>IPSec Hybrid RSA</dd>
+    <dt>服务器地址</dt><dd>{{user.dns_info[user.zone+'.lv5.ac']}}</dd>
+    <dt>显示高级选项</dt><dd>√</dd>
+    <dt>DNS 服务器</dt><dd>{{{h:'10.8.0.1',a:'10.1.0.1',j:'10.9.0.1'}[user.zone]}}</dd>
+</dl>
+</li>
+    <li>连接
+
+<dl>
+    <dt>用户名</dt><dd>zh99998</dd>
+    <dt>密码</dt><dd>26095</dd>
+    <dt>保存账户信息</dt><dd>√</dd>
+</dl>
+    </li>
+    <li>菜单 &gt 始终开启的 VPN &gt Railgun &gt 确定</li>
+</ol>
+<hr>或者
+<a data-ui-sref="home.tutorials({platform:'android'})">查看详细连接说明及 Android 的其他连接方式</a>

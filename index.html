@@ -8,9 +8,10 @@
     <base href="/">
 </head>
 <body>
-<header ng-class="{logged_in: $state.includes('home.')}">
+<header ng-class="{ home: $state.includes('home')}">
     <!--<nav>
         <ul>
+            <li class="nav_item"><a href="/">Google+</a></li>
             <li class="nav_item"><a href="/">博客</a></li>
             <li class="nav_item"><a href="/">支持</a></li>
             <li class="nav_item"><a href="/">状态</a></li>
@@ -22,7 +23,7 @@
 <div data-ui-view="body"></div>
 <footer>
     <p>&copy; 2015 Railgun Accelerator</p>
-    <p>Designed By <a href="http://www.qzworld.net/">LTS</a></p>
+    <p>Designed By <a href="http://www.qzworld.net/" target="_blank">LTS</a></p>
 </footer>
 </body>
 <!-- public/index.html -->
@@ -31,5 +32,6 @@
 <script>
     System.import('source/app.js');
 </script>
+<link rel="stylesheet" href="http://fontastic.s3.amazonaws.com/Jnf54BZCm7mSjGCxNRbfp3/icons.css" type="text/css">
 <link rel="stylesheet" href="assets/app.css" type="text/css">
 </html>

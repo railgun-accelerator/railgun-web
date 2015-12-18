@@ -1,0 +1,165 @@
+<div id="tutorial"><h1>Windows PC 连接说明</h1>
+    <p>请根据需要任选下面其中一种连接方式.</p>
+    <h2 id="http-pac">HTTP 代理自动配置(PAC) (推荐)</h2>
+    <p>对于大部分用户，我们推荐使用 HTTP 代理自动配置方式。</p>
+    <ul>
+        <li><p>启动Internet Explorer浏览器</p>
+        </li>
+        <li><p>依次进入 <strong>工具 (Alt+X)</strong> &gt; <strong>Internet 选项</strong> &gt; <strong>连接</strong>；</p>
+            <ul>
+                <li>如果你用当前电脑拨号连接，选中此拨号连接，然后点旁边的“设置”；</li>
+                <li>如果你用路由器，或者你的电脑通过局域网或 Wi-Fi 上网，选择 <strong>局域网设置</strong></li>
+            </ul>
+        </li>
+        <li><p>选中“使用自动配置脚本”，然后 复制 下面的地址，并将其 粘贴 在“地址”一栏：</p>
+        </li>
+    </ul>
+    <blockquote>
+        <table>
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>使用自动配置脚本</td>
+                <td>√</td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td><a href="http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.pac">http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.pac</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </blockquote>
+    <ul>
+        <li>一路点击“确定”；</li>
+    </ul>
+    <blockquote>
+        <p><strong>如果你使用Firefox或Chrome浏览器：</strong></p>
+        <ul>
+            <li>请按上面的步骤设置IE代理，然后确认禁用了各种代理插件，并且，它们使用的是系统的代理（在浏览器的参数设置里可见）。<!-- > - 如果你一定要用代理插件，那么看这里。 -->
+            </li>
+        </ul>
+    </blockquote>
+    <h2 id="http">HTTP 代理</h2>
+    <ul>
+        <li><p>启动Internet Explorer浏览器</p>
+        </li>
+        <li><p>依次进入 <strong>工具 (Alt+X)</strong> &gt; <strong>Internet 选项</strong> &gt; <strong>连接</strong>；</p>
+        </li>
+        <li><p>如果你用当前电脑拨号连接，选中此拨号连接，然后点旁边的“设置”；</p>
+        </li>
+        <li>如果你用路由器，或者你的电脑通过局域网或 Wi-Fi 上网，选择 <strong>局域网设置</strong></li>
+    </ul>
+    <blockquote>
+        <table>
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>主机</td>
+                <td>{{user.zone}}.lv5.ac</td>
+            </tr>
+            <tr>
+                <td>端口</td>
+                <td>{{user.sub_password}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </blockquote>
+    <ul>
+        <li>一路点击“确定”；</li>
+    </ul>
+    <blockquote>
+        <p><strong>如果你使用Firefox或Chrome浏览器：</strong></p>
+        <ul>
+            <li>请按上面的步骤设置IE代理，然后确认禁用了各种代理插件，并且，它们使用的是系统的代理（在浏览器的参数设置里可见）。</li>
+        </ul>
+    </blockquote>
+    <h2 id="vpn-">VPN 自动配置脚本</h2>
+    <ul>
+        <li><p>请下载 <a href="http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.bat">http://p.lv5.ac/{{user.zone}}{{user.sub_password}}.bat</a> 并执行</p>
+        </li>
+        <li><p>点击系统托盘区的网络图标, 选择 "Railgun", 点击连接</p>
+        </li>
+    </ul>
+    <blockquote>
+        <ul>
+            <li>自动配置脚本适用于 Windows 7 或更高版本.</li>
+            <li>配置脚本只需要下载执行一次, 执行成功后可以删除. 连接 VPN 每次开机后需要手动执行.</li>
+            <li>目前的 VPN 服务只支持 IPv4, 如果你有 IPv6 网络, 并且连接 VPN 后访问支持 IPv6 的站点不走 VPN, 请禁用 IPv6 或设置 IPv4 优先.</li>
+            <li>默认的 IKEv2 协议在部分网络环境中无法连接, 如果遇到这个问题请把协议设置为PPTP或L2TP.</li>
+        </ul>
+    </blockquote>
+    <h2 id="vpn">VPN</h2>
+    <ul>
+        <li><p>右键点击系统托盘区域的 "网络" 图标.</p>
+        </li>
+        <li><p>点击 "打开网络和共享中心".</p>
+        </li>
+        <li><p>点击 "建立新的连接或网络"</p>
+        </li>
+        <li><p>选择 "连接到工作区", 点击 "下一步"</p>
+        </li>
+        <li><p>选择 "使用我的 Internet 连接"</p>
+        </li>
+        <li><p>填写地址和名称, 其他设置保持默认, 点击 "创建"</p>
+        </li>
+    </ul>
+    <blockquote>
+        <table>
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>地址</td>
+                <td>{{user.zone}}.lv5.ac</td>
+            </tr>
+            <tr>
+                <td>名称</td>
+                <td>Railgun (或其他任意自定义名称)</td>
+            </tr>
+            </tbody>
+        </table>
+    </blockquote>
+    <ul>
+        <li>右键点击系统托盘区域的 "网络" 图标, 点击 VPN - Railgun - 连接, 输入用户名和密码</li>
+    </ul>
+    <blockquote>
+        <table>
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>用户名</td>
+                <td>zh99998</td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td>{{user.sub_password}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>建立和配置 VPN 只需执行一次, 执行成功后可以删除. 连接 VPN 每次开机后需要手动执行.</li>
+            <li>Windows 10 如果连接 VPN 后流量没有走 VPN, 可能是 SplitTunneling 开启了, 在 powershell 中执行 Set-VpnConnection "Railgun" -SplitTunneling $False . 其中 Railgun 是你的 VPN 连接名称</li>
+            <li>目前的 VPN 服务只支持 IPv4, 如果你有 IPv6 网络, 并且连接 VPN 后访问支持 IPv6 的站点不走 VPN, 请禁用 IPv6 或设置 IPv4 优先.</li>
+            <li>默认的 IKEv2 协议在部分网络环境中无法连接, 如果遇到这个问题请把协议设置为PPTP或L2TP. L2TP 预共享密钥为 "Railgun"</li>
+        </ul>
+    </blockquote>
+</div>

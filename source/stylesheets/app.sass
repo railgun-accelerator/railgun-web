@@ -5,42 +5,168 @@ html
 body
   -webkit-font-smoothing: subpixel-antialiased
 header
-  background: url('/images/title.png'), -webkit-linear-gradient(90deg, #5c00ff, #410cc7)
+  background: url('/images/title.png') 80% bottom / auto 380px no-repeat ,  -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
   position: relative
   height: 500px
   color: white
-
-  #index-header
-    position: absolute
-    text-align: center
-    margin: auto
-    left: 0
-    right: 40%
-    top: 100px
-    h1
-      font-size: 40px
-      line-height: 60px
-    .subtitle
-      font-size: 15px
-      line-height: 40px
-    .sign_button_group
-      width: 200px
-      margin: 15px auto
-      border: 1px white solid
-      border-radius: 3px
-      font-size: 12px
+  transition: height 1s ease-in-out
+  nav ul
+    transition-property: width, margin, padding
+    transition-duration: 300ms
+    transition-timing-function: ease-in-out
+    background: #3e00a4
+    margin-top: 20px
+    margin-right: -15px
+    padding-left: 20px
+    padding-right: 30px
+    float: right
+    transform: skew(-22.5deg)
+    position: relative
+    overflow: hidden
+    z-index: 1
+    li
+      list-style: none
+      float: left
       a
-        width: 76px
-        padding: 12px
-        display: block
-        color: inherit
+        color: white
         text-decoration: none
-        transition: background-color 0.3s
-        &:hover
-          color: #4e06e1
-          background: white
+        display: block
+        transform: skew(22.5deg)
+        padding: 20px 30px
+        border: 0
+  &.home
+    background: -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
+    height: 220px
+    #user
+      padding: 40px 30px
+      #avatar
+        width: 120px
+        height: 120px
+        border: white 8px solid
+        border-radius: 50%
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
+      #user-right
+        margin: 0 0 0 20px
+        #username-and-plan
+          margin: 29px 0 10px 0
+          #username
+            color: inherit
+            text-decoration: none
+            font-size: 30px
+            margin: 0 4px 10px 10px
+          .user-tag
+            margin-left: 6px
+            color: #ffae00
+            text-decoration: none
+        #user-statistics
+          .fa
+            margin-left: 12px
+          span
+            margin-left: 6px
+          a
+            color: white
+            text-decoration: none
+          .button
+            font-size: 13px
+            background: transparent
+            border: white 1px solid
+            border-radius: 3px
+            -o-border-radius: 3px
+            -moz-border-radius: 3px
+            -webkit-border-radius: 3px
+            transition: all 0.2s ease-in
+            outline: none
+            margin-left: 8px
+            padding: 1px 4px
+            &:hover
+              background: white
+              color: #5105e9
+              transition: all 0.2s ease-out
+
+  #index-header-wrapper
+    display: table
+    position: absolute
+    left: 0
+    width: 55%
+    height: 100%
+    #index-header
+      vertical-align: middle
+      display: table-cell
+      text-align: center
+      h1
+        margin: 0
+        font-size: 40px
+      .subtitle
+        font-size: 15px
+        margin: 20px 0 30px 0
+      .sign_button_group
+        width: 200px
+        margin: auto
+        border: 1px white solid
+        border-radius: 3px
+        font-size: 12px
+        a
+          width: 76px
+          padding: 12px
+          display: block
+          color: inherit
+          text-decoration: none
+          transition: background-color 0.3s
+          &:hover
+            color: #4e06e1
+            background: white
+      h2
+        margin-top: 0
+      form
+        font-size: 13px
+        width: 218px
+        margin: auto
+        text-align: initial
+        input
+          background: transparent
+          border: white 1px solid
+          border-radius: 3px
+          -o-border-radius: 3px
+          -moz-border-radius: 3px
+          -webkit-border-radius: 3px
+          color: white
+          transition: all 0.2s ease-in
+          outline: none
+          &[type='text'], &[type='password'], &[type='email']
+            margin: 5px 0
+            padding: 8px
+            width: 200px
+            &::-webkit-input-placeholder
+              color: white
+              opacity: 0.8
+              transition: all 0.2s ease-in
+            &:focus
+              background: white
+              color: #5105e9
+              transition: all 0.2s ease-out
+              &::-webkit-input-placeholder
+                color: #5105e9
+                opacity: 1
+          &[type='submit'], &[type='button']
+            margin: 8px 3px
+            padding: 4px
+            &:hover
+              background: white
+              color: #5105e9
+              transition: all 0.2s ease-out
+        a
+          color: white
+          text-decoration: none
+          border-bottom: 1px white dashed
+        #password-reset, label
+          float: left
+          margin-top: 10px
+        #sign_action_button_group
+          text-align: right
+
+
 #features
-  padding: 0 5% 0 5%
+  padding: 4px 5% 4px 5%
   list-style: none
   text-align: center
   li
@@ -67,3 +193,22 @@ footer
   background: #c0b5d3
   padding: 8px 30px
   color: #3c324d
+  a
+    color: #2c184f
+    text-decoration: none
+    border-bottom: 1px dashed #20113c
+
+#home-body
+  margin: 0 24px 0 24px
+#payment md-input-container
+  margin: 0
+#account
+  width: 100%
+  td
+    padding: 0 4px 0 4px
+    &:nth-child(1)
+      font-weight: bold
+      text-align: right
+    &:nth-child(3)
+      font-size: 12px
+      color: gray
