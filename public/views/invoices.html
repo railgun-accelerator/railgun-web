@@ -58,13 +58,4 @@
     </md-content>
 </div>
 <h2>账单历史</h2>
-<dtable options="options" rows="data" class="material">
-    <column name="生成时间" prop="generate_time">{{$cell * 1000 | date: 'yyyy-MM-dd h:mm:ss'}}</column>
-    <column name="完成时间" prop="finish_time"><span ng-if="$cell">{{$cell * 1000 | date: 'yyyy-MM-dd h:mm:ss'}}</span></column>
-    <column name="类型" prop="type">{{'invoice_type.'+$cell | translate}}</column>
-
-    <column name="金额 (¥)" prop="amount"><span ng-if="$cell">{{$cell / 100 | currency:''}}</span></column>
-    <column name="状态" prop="status">{{'invoice_status.'+$cell | translate}}</column>
-    <column name="操作">1</column>
-</dtable>
-<p>nyaa</p>
+<div data-ui-grid="grid" class="grid"></div>

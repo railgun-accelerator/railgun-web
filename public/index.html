@@ -8,11 +8,11 @@
     <title>电磁炮加速计划</title>
     <base href="/">
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="assets/style.css" type="text/css">
 
 </head>
 <body>
-<header ng-class="{ home: $state.includes('home')}">
+<header ng-class="{ home: $state.includes('home'), welcome: $state.includes('welcome')}">
     <!--<nav>
         <ul>
             <li class="nav_item"><a href="/">Google+</a></li>
@@ -31,5 +31,5 @@
 </footer>
 </body>
 <!-- public/index.html -->
-<script src="app.js"></script>
+<script src="assets/app.js"></script>
 </html>

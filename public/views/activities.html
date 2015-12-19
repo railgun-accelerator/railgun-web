@@ -34,12 +34,5 @@
 <md-button class="md-raised md-primary" ng-click="resetSubPassword()">重置服务密码</md-button>
 
 <h2>账户活动记录</h2>
-<dtable options="options" rows="data" class="material">
-    <column name="起始时间" prop="started_at" sort="desc">{{$cell | date: 'yyyy-MM-dd h:mm:ss'}}</column>
-    <column name="终止时间" prop="ended_at">{{$cell | date: 'yyyy-MM-dd h:mm:ss'}}</column>
-    <column name="流量" prop="traffic">{{$cell | humanizeFilesize}}</column>
-    <column name="协议" prop="protocol">{{'protocol.'+$cell | translate}}</column>
-    <column name="IP 地址" prop="client_address"></column>
-    <column name="地区" prop="location"></column>
-</dtable>
+<div data-ui-grid="grid" class="grid"></div>
 <p>如果发现可疑访问，请重置服务密码。</p>

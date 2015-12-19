@@ -3,7 +3,7 @@ html
 body
   -webkit-font-smoothing: subpixel-antialiased
 header
-  background: url('/images/title.png') 80% bottom / auto 380px no-repeat ,  -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
+  background: -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
   position: relative
   height: 500px
   color: white
@@ -32,8 +32,10 @@ header
         transform: skew(22.5deg)
         padding: 20px 30px
         border: 0
+  &.welcome
+    @media (min-width: 960px)
+      background: url('/images/title.png') 80% bottom / auto 380px no-repeat ,  -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
   &.home
-    background: -webkit-linear-gradient(90deg, #5c00ff, #410cc7)  left top no-repeat
     height: 220px
     #user
       padding: 40px 30px
@@ -85,7 +87,10 @@ header
     display: table
     position: absolute
     left: 0
-    width: 55%
+    width: 100%
+    transition: width 0.2s ease-out
+    @media (min-width: 960px)
+      width: 55%
     height: 100%
     #index-header
       vertical-align: middle

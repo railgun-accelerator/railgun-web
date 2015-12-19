@@ -1,38 +1,38 @@
 'use strict';
 
-angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.validate', 'ng-token-auth', 'pascalprecht.translate', 'data-table', 'angular-humanize', 'monospaced.qrcode'])
+angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.validate', 'ui.grid', 'ng-token-auth', 'pascalprecht.translate', 'angular-humanize', 'monospaced.qrcode'])
     .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
         //$locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
         $stateProvider
-            .state('index', {
+            .state('welcome', {
                 abstract: true,
                 views: {
-                    "header": {templateUrl: '/views/index.header.html'},
-                    "body": {templateUrl: '/views/index.body.html'}
+                    "header": {templateUrl: 'views/welcome.header.html'},
+                    "body": {templateUrl: 'views/welcome.body.html'}
                 }
             })
-            .state('index.index', {
+            .state('welcome.index', {
                 url: '/',
-                templateUrl: '/views/index.html'
+                templateUrl: 'views/welcome.html'
             })
-            .state('index.sign_in', {
+            .state('welcome.sign_in', {
                 url: '^/sign_in?go',
-                templateUrl: '/views/sign_in.html',
+                templateUrl: 'views/sign_in.html',
                 controller: 'SignInController'
             })
-            .state('index.sign_up', {
+            .state('welcome.sign_up', {
                 url: '^/sign_up?code',
-                templateUrl: '/views/sign_up.html',
+                templateUrl: 'views/sign_up.html',
                 controller: 'SignUpController'
             })
-            .state('index.password_reset_1', {
+            .state('welcome.password_reset_1', {
                 url: '^/password_reset',
-                templateUrl: '/views/passsword_reset_1.html'
+                templateUrl: 'views/passsword_reset_1.html'
             })
-            .state('index.password_reset_2', {
+            .state('welcome.password_reset_2', {
                 url: '^/password_reset/:code',
-                templateUrl: '/views/passsword_reset_2.html'
+                templateUrl: 'views/passsword_reset_2.html'
             })
             .state('email_verify', {
                 url: '^/email_verify/:code',
@@ -41,28 +41,28 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
             .state('home', {
                 abstract: true,
                 views: {
-                    "header": {templateUrl: '/views/home.header.html'},
-                    "body": {templateUrl: '/views/home.body.html'}
+                    "header": {templateUrl: 'views/home.header.html'},
+                    "body": {templateUrl: 'views/home.body.html'}
                 }
             })
             .state('home.index', {
                 url: '^/my',
-                templateUrl: '/views/home.html',
+                templateUrl: 'views/home.html',
                 controller: 'HomeController'
             })
             .state('home.tutorials', {
                 url: '^/my/tutorials/:platform',
-                templateUrl: '/views/tutorials.html',
+                templateUrl: 'views/tutorials.html',
                 controller: 'TutorialsController'
             })
             .state('home.invoices', {
                 url: '^/my/invoices',
-                templateUrl: '/views/invoices.html',
+                templateUrl: 'views/invoices.html',
                 controller: 'InvoicesController'
             })
             .state('home.activities', {
                 url: '^/my/activities',
-                templateUrl: '/views/activities.html',
+                templateUrl: 'views/activities.html',
                 controller: 'ActivitiesController'
             })
 
@@ -185,9 +185,9 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                 })
         }
     })
-    .controller('SignUpController', function ($scope, $stateParams, $http) {
+    .controller('SignUpController', function ($scope, $stateParams, $http, api) {
         $scope.user = {code: $stateParams.code};
-        $scope.submit = function (api) {
+        $scope.submit = function () {
             $http.put(api + '/sign_up', $scope.user).then(function (response) {
                 console.log('success', response)
             }, function (response) {
@@ -201,7 +201,7 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
     .controller('HomeController', function ($scope, $auth, $state, $compile, $sce) {
         $scope.sign_out = function () {
             $auth.signOut();
-            $state.go('index.index')
+            $state.go('welcome.index')
         };
         // fucking platfo
         // rm.js , I had to parse User-Agent manually.
@@ -223,12 +223,22 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                 break;
         }
         if ($scope.tutorial) {
-            $scope.tutorial = '/views/tutorials/' + $scope.tutorial + '.lite.html'
+            $scope.tutorial = 'views/tutorials/' + $scope.tutorial + '.lite.html'
         }
 
 
     })
     .controller('InvoicesController', function ($scope, $http, $rootScope, api) {
+        $scope.grid = {
+            columnDefs: [{ field: 'generate_time', displayName: '生成时间', cellTemplate: '<div class="ui-grid-cell-contents">{{row.entity[col.field] * 1000 | date: "yyyy-MM-dd hh:mm:ss"}}</div>'},
+                { field: 'finish_time', displayName: '完成时间', cellTemplate: '<div class="ui-grid-cell-contents">{{ row.entity[col.field] ? row.entity[col.field] * 1000 : null | date: "yyyy-MM-dd hh:mm:ss"}}</div>' },
+                { field: 'type', displayName: '类型', cellTemplate: '<div class="ui-grid-cell-contents">{{"invoice_type."+row.entity[col.field] | translate}}</div>' },
+                { field: 'amount', displayName: '金额 (¥)', cellTemplate: '<div class="ui-grid-cell-contents">{{row.entity[col.field] / 100 | currency:""}}</div>' },
+                { field: 'status', displayName: '状态', cellTemplate: '<div class="ui-grid-cell-contents">{{"invoice_status."+row.entity[col.field] | translate}}</div>' },
+                { field: 'status', displayName: '操作', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#" data-ng-if="row.entity.status == 0 && row.entity.type == 1">付款</a></div>' }
+            ]
+        };
+
         $scope.zone_id = $rootScope.user.zone;
         $scope.plan_id = $rootScope.user.plan;
         const plans_enabled = [2, 3, 4];
@@ -261,15 +271,24 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
             });
         $http.get(api + '/invoice')
             .then(function (response) {
-                $scope.data = response.data
+                $scope.grid.data = response.data
             })
     })
-    .controller('ActivitiesController', function ($scope, $rootScope, $http, $mdDialog, $auth, $mdToast) {
-        $scope.options = {};
+    .controller('ActivitiesController', function ($scope, $rootScope, $http, $mdDialog, $auth, $mdToast, api) {
+
+        $scope.grid = {
+            columnDefs: [{ field: 'started_at', displayName: '起始时间', cellTemplate: '<div class="ui-grid-cell-contents">{{row.entity[col.field] | date: "yyyy-MM-dd hh:mm:ss"}}</div>'},
+                { field: 'ended_at', displayName: '终止时间', cellTemplate: '<div class="ui-grid-cell-contents">{{row.entity[col.field] | date: "yyyy-MM-dd hh:mm:ss"}}</div>' },
+                { field: 'traffic', displayName: '流量', cellTemplate: '<div class="ui-grid-cell-contents">{{row.entity[col.field] | humanizeFilesize}}</div>' },
+                { field: 'protocol', displayName: '协议', cellTemplate: '<div class="ui-grid-cell-contents">{{"protocol."+row.entity[col.field] | translate}}</div>' },
+                { field: 'client_address', displayName: 'IP 地址' },
+                { field: 'location', displayName: '地区' }
+            ]
+        };
         if ($rootScope.user.id) {
             $http.get(api + '/activities', {params: {user_id: $rootScope.user.id}})
                 .then(function (response) {
-                    $scope.data = response.data
+                    $scope.grid.data = response.data
                 })
         }
         $scope.changePassword = function (event) {
@@ -326,7 +345,7 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
     })
     .controller('TutorialsController', function ($scope, $stateParams) {
         console.log($stateParams)
-        $scope.tutorial = '/views/tutorials/' + $stateParams.platform + '.html'
+        $scope.tutorial = 'views/tutorials/' + $stateParams.platform + '.html'
     })
     .directive('selectOnClick', function () {
         return {
