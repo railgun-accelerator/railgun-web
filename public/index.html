@@ -8,6 +8,8 @@
     <title>电磁炮加速计划</title>
     <base href="/">
     <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="style.css" type="text/css">
+
 </head>
 <body>
 <header ng-class="{ home: $state.includes('home')}">
@@ -29,11 +31,5 @@
 </footer>
 </body>
 <!-- public/index.html -->
-<script src="jspm_packages/system.js"></script>
-<script src="config.js"></script>
-<script>
-    System.import('source/app.js');
-</script>
-<link rel="stylesheet" href="http://fontastic.s3.amazonaws.com/Jnf54BZCm7mSjGCxNRbfp3/icons.css" type="text/css">
-<link rel="stylesheet" href="assets/app.css" type="text/css">
+<script src="app.js"></script>
 </html>

@@ -1,80 +1,38 @@
 'use strict';
 
-import 'angular'
-import 'angular-messages'
-import 'angular-material'
-import 'angular-ui-router'
-import 'angular-ui/ui-validate'
-import 'auth0/angular-storage'
-import 'ivpusic/angular-cookie'
-import 'lynndylanhurley/ng-token-auth'
-import 'angular-translate'
-import 'angular-i18n/zh-cn'
-import 'babel/external-helpers'
-import 'Swimlane/angular-data-table'
-import 'Swimlane/angular-data-table/release/dataTable.css!'
-import 'Swimlane/angular-data-table/release/material.css!'
-import moment from 'moment'
-import 'taijinlee/humanize'
-import 'saymedia/angularjs-humanize'
-import 'angular-marked' //没有用到
-import qrcode from 'qrcode-generator'
-import 'angular-qrcode'
-import crypto from 'crypto'
-
-//import 'LeaVerou/prefixfree'
-import 'font-awesome'
-import 'adobe-fonts/source-sans-pro/source-sans-pro.css!'
-
-import IndexHeaderTemplate from './views/index.header.html!text'
-import IndexBodyTemplate from './views/index.body.html!text'
-import IndexTemplate from './views/index.html!text'
-import SignInTemplate from './views/sign_in.html!text'
-import SignUpTemplate from './views/sign_up.html!text'
-import PasswordReset1Template from './views/password_reset_1.html!text'
-import PasswordReset2Template from './views/password_reset_2.html!text'
-import HomeHeaderTemplate from './views/home.header.html!text'
-import HomeBodyTemplate from './views/home.body.html!text'
-import HomeTemplate from './views/home.html!text'
-import InvoicesTemplate from './views/invoices.html!text'
-import ActivitiesTemplate from './views/activities.html!text'
-import TutorialsTemplate from './views/tutorials.html!text'
-
-window.qrcode = qrcode;
-
-angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.validate', 'angular-storage', 'ng-token-auth', 'pascalprecht.translate', 'data-table', 'angular-humanize', 'hc.marked', 'monospaced.qrcode'])
-    .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
-        $locationProvider.html5Mode(true);
+angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.validate', 'ng-token-auth', 'pascalprecht.translate', 'data-table', 'angular-humanize', 'monospaced.qrcode'])
+    .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+        //$locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('index', {
                 abstract: true,
                 views: {
-                    "header": {template: IndexHeaderTemplate},
-                    "body": {template: IndexBodyTemplate}
+                    "header": {templateUrl: '/views/index.header.html'},
+                    "body": {templateUrl: '/views/index.body.html'}
                 }
             })
             .state('index.index', {
                 url: '/',
-                template: IndexTemplate
+                templateUrl: '/views/index.html'
             })
             .state('index.sign_in', {
-                url: '^/sign_in',
-                template: SignInTemplate,
+                url: '^/sign_in?go',
+                templateUrl: '/views/sign_in.html',
                 controller: 'SignInController'
             })
             .state('index.sign_up', {
                 url: '^/sign_up?code',
-                template: SignUpTemplate,
+                templateUrl: '/views/sign_up.html',
                 controller: 'SignUpController'
             })
             .state('index.password_reset_1', {
                 url: '^/password_reset',
-                template: PasswordReset1Template
+                templateUrl: '/views/passsword_reset_1.html'
             })
             .state('index.password_reset_2', {
                 url: '^/password_reset/:code',
-                template: PasswordReset2Template
+                templateUrl: '/views/passsword_reset_2.html'
             })
             .state('email_verify', {
                 url: '^/email_verify/:code',
@@ -83,35 +41,35 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
             .state('home', {
                 abstract: true,
                 views: {
-                    "header": {template: HomeHeaderTemplate},
-                    "body": {template: HomeBodyTemplate}
+                    "header": {templateUrl: '/views/home.header.html'},
+                    "body": {templateUrl: '/views/home.body.html'}
                 }
             })
             .state('home.index', {
                 url: '^/my',
-                template: HomeTemplate,
+                templateUrl: '/views/home.html',
                 controller: 'HomeController'
             })
             .state('home.tutorials', {
                 url: '^/my/tutorials/:platform',
-                template: TutorialsTemplate,
+                templateUrl: '/views/tutorials.html',
                 controller: 'TutorialsController'
             })
             .state('home.invoices', {
                 url: '^/my/invoices',
-                template: InvoicesTemplate,
+                templateUrl: '/views/invoices.html',
                 controller: 'InvoicesController'
             })
             .state('home.activities', {
                 url: '^/my/activities',
-                template: ActivitiesTemplate,
+                templateUrl: '/views/activities.html',
                 controller: 'ActivitiesController'
             })
 
     })
-    .config(($authProvider)=> {
+    .config(function ($authProvider, api) {
         $authProvider.configure({
-            apiUrl: 'https://dev.railgun.ac/api',
+            apiUrl: api,
             emailRegistrationPath: '/auth',
             emailSignInPath: '/sign_in',
             tokenValidationPath: '/sign_in',
@@ -125,15 +83,15 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                 // convert from UTC ruby (seconds) to UTC js (milliseconds)
                 return new Date().getTime() + 10 * 365 * 24 * 60 * 60 * 1000;
             },
-            handleLoginResponse: (response) => {
+            handleLoginResponse: function (response) {
                 return response;
             },
-            handleTokenValidationResponse: (response)=> {
+            handleTokenValidationResponse: function (response) {
                 return response;
             }
         })
     })
-    .config(($translateProvider)=> {
+    .config(function ($translateProvider) {
         $translateProvider.translations('zh-CN', {
             status: {
                 0: '等待邮箱验证',
@@ -177,59 +135,71 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
         $translateProvider.preferredLanguage('zh-CN');
         $translateProvider.useSanitizeValueStrategy(null);
     })
-    .run(($rootScope, $state, $auth) => {
+    .run(function ($rootScope, $state, $stateParams, $auth) {
         $rootScope.$state = $state;
         function onLogin(event) {
             $rootScope.user = event.targetScope.user;
             $rootScope.user.sub_password_2 = parseInt($rootScope.user.sub_password) + 1;
             $rootScope.user.sub_password_3 = parseInt($rootScope.user.sub_password) + 2;
             $rootScope.user.sub_password_4 = parseInt($rootScope.user.sub_password) + 3;
-            $rootScope.user.avatar = 'https://www.gravatar.com/avatar/' + crypto.createHash('md5').update($rootScope.user.email).digest('hex') + '?s=120';
-            $rootScope.user.shadowsocks_url = 'ss://' + btoa('aes-256-cfb:railgun@'+ $rootScope.user.zone +'.lv5.ac:' + $rootScope.user.sub_password_4);
-            console.log($rootScope.user.shadowsocks_url)
-            $state.go('home.index');
+            $rootScope.user.avatar = 'https://www.gravatar.com/avatar/' + md5($rootScope.user.email) + '?s=120';
+            $rootScope.user.shadowsocks_url = 'ss://' + btoa('aes-256-cfb:railgun@' + $rootScope.user.zone + '.lv5.ac:' + $rootScope.user.sub_password_4);
+            $rootScope.user.support_url = "https://support.railgun.ac/?jwt=" + KJUR.jws.JWS.sign("HS256", JSON.stringify({
+                    alg: 'HS256',
+                    typ: 'JWT'
+                }), {
+                    name: $rootScope.user.username,
+                    external_id: $rootScope.user.id,
+                    email: $rootScope.user.email
+                }, "-J74poBLHieUHPMSpFsPMw");
+            if ($stateParams.go == 'support') {
+                location.href = "https://support.railgun.ac/?jwt=" + jwt
+            } else {
+                $state.go('home.index');
+            }
+
         }
 
         $rootScope.$on('auth:login-success', onLogin);
         $rootScope.$on('auth:validation-success', onLogin);
-        $rootScope.$on('auth:validation-error', (event) => {
+        $rootScope.$on('auth:validation-error', function (event) {
             console.log('auth:validation-error')
         });
-        $rootScope.$on('auth:session-expired', (event) => {
+        $rootScope.$on('auth:session-expired', function (event) {
             console.log('auth:session-expired')
         });
         $auth.validateUser();
         //console.log(1);
     })
-    .controller('SignInController', ($scope, $auth)=> {
-        $scope.submit = ()=> {
+    .controller('SignInController', function ($scope, $auth) {
+        $scope.submit = function () {
             $auth.submitLogin($scope.user)
-                .then((response)=> {
+                .then(function (response) {
                     $auth.setAuthHeaders($auth.buildAuthHeaders({
                         token: response.token
                     }));
                     console.log('success', response)
                 })
-                .catch((response)=> {
+                .catch(function (response) {
                     console.log('fail', response)
                 })
         }
     })
-    .controller('SignUpController', ($scope, $stateParams, $http)=> {
+    .controller('SignUpController', function ($scope, $stateParams, $http) {
         $scope.user = {code: $stateParams.code};
-        $scope.submit = ()=> {
-            $http.put('https://railgun.ac/api/sign_up', $scope.user).then((response) => {
+        $scope.submit = function (api) {
+            $http.put(api + '/sign_up', $scope.user).then(function (response) {
                 console.log('success', response)
-            }, (response) => {
+            }, function (response) {
                 console.log('fail', response)
             })
         }
     })
-    .controller('EmailVerifyController', ($scope, $stateParams)=> {
+    .controller('EmailVerifyController', function ($scope, $stateParams) {
         console.log($stateParams.code)
     })
-    .controller('HomeController', ($scope, $auth, $state, $compile, $sce)=> {
-        $scope.sign_out = () => {
+    .controller('HomeController', function ($scope, $auth, $state, $compile, $sce) {
+        $scope.sign_out = function () {
             $auth.signOut();
             $state.go('index.index')
         };
@@ -252,13 +222,13 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                 $scope.tutorial = 'linux';
                 break;
         }
-        if($scope.tutorial){
-            $scope.tutorial = '/source/views/tutorials/' + $scope.tutorial + '.lite.html'
+        if ($scope.tutorial) {
+            $scope.tutorial = '/views/tutorials/' + $scope.tutorial + '.lite.html'
         }
 
 
     })
-    .controller('InvoicesController', ($scope, $http, $rootScope)=> {
+    .controller('InvoicesController', function ($scope, $http, $rootScope, api) {
         $scope.zone_id = $rootScope.user.zone;
         $scope.plan_id = $rootScope.user.plan;
         const plans_enabled = [2, 3, 4];
@@ -281,36 +251,36 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
             4: {id: 4, price: 5368709},
             3: {id: 3, price: 4294967}
         };
-        $http.get('https://dev.railgun.ac/api/plan')
-            .then((response)=> {
-                $scope.plans = response.data.filter((plan)=> {
+        $http.get(api + '/plan')
+            .then(function (response) {
+                $scope.plans = response.data.filter(function (plan) {
                     return plans_enabled.includes(plan.id)
-                }).sort((a, b)=> {
+                }).sort(function (a, b) {
                     return +(a.price > b.price) || +(a.price === b.price) - 1
                 });
             });
-        $http.get('https://dev.railgun.ac/api/invoice')
-            .then((response)=> {
+        $http.get(api + '/invoice')
+            .then(function (response) {
                 $scope.data = response.data
             })
     })
-    .controller('ActivitiesController', ($scope, $rootScope, $http, $mdDialog, $auth, $mdToast)=> {
+    .controller('ActivitiesController', function ($scope, $rootScope, $http, $mdDialog, $auth, $mdToast) {
         $scope.options = {};
         if ($rootScope.user.id) {
-            $http.get('https://railgun.ac/api/activities', {params: {user_id: $rootScope.user.id}})
-                .then((response)=> {
+            $http.get(api + '/activities', {params: {user_id: $rootScope.user.id}})
+                .then(function (response) {
                     $scope.data = response.data
                 })
         }
-        $scope.changePassword = (event) => {
+        $scope.changePassword = function (event) {
             $auth.updatePassword($scope.user)
-                .then((response)=> {
+                .then(function (response) {
                     $mdToast.show(
                         $mdToast.simple()
                             .content('修改登录密码成功')
                             .position('bottom left')
                     )
-                }, (response)=> {
+                }, function (response) {
                     $mdDialog.show(
                         $mdDialog.alert()
                             .clickOutsideToClose(true)
@@ -322,7 +292,7 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                     );
                 })
         };
-        $scope.resetSubPassword = (event) => {
+        $scope.resetSubPassword = function (event) {
             // Appending dialog to document.body to cover sidenav in docs app
             $mdDialog.show(
                 $mdDialog.confirm()
@@ -332,41 +302,42 @@ angular.module('app', ['ngLocale', 'ngMaterial', 'ngMessages', 'ui.router', 'ui.
                     .targetEvent(event)
                     .ok('重置')
                     .cancel('取消')
-            ).then(()=> {
-                    $http.get('https://dev.railgun.ac/api/zone', {zone: $rootScope.user.zone})
-                        .then(()=> {
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .content('重置服务密码成功')
-                                    .position('bottom left')
-                            )
-                        }, ()=> {
-                            $mdDialog.show(
-                                $mdDialog.alert()
-                                    .clickOutsideToClose(true)
-                                    .title('重置服务密码失败')
-                                    .content('You can specify some description text in here.')
-                                    .ariaLabel('Alert Dialog Demo')
-                                    .ok('确定')
-                                    .targetEvent(event)
-                            );
-                        })
-                });
+            ).then(function () {
+                $http.get(api + '/zone', {zone: $rootScope.user.zone})
+                    .then(function () {
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content('重置服务密码成功')
+                                .position('bottom left')
+                        )
+                    }, function () {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('重置服务密码失败')
+                                .content('You can specify some description text in here.')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('确定')
+                                .targetEvent(event)
+                        );
+                    })
+            });
         };
     })
-    .controller('TutorialsController', ($scope, $stateParams)=>{
+    .controller('TutorialsController', function ($scope, $stateParams) {
         console.log($stateParams)
-        $scope.tutorial = '/source/views/tutorials/' + $stateParams.platform + '.html'
+        $scope.tutorial = '/views/tutorials/' + $stateParams.platform + '.html'
     })
-    .directive('selectOnClick', () => {
+    .directive('selectOnClick', function () {
         return {
             restrict: 'A',
-            link: (scope, element, attrs) => {
-                element.on('focus', (event) => {
+            link: function (scope, element, attrs) {
+                element.on('focus', function (event) {
                     event.target.select()
                 });
             }
         };
     })
+    .constant('api', 'https://dev.railgun.ac/api');
 
 angular.bootstrap(document, ['app']);

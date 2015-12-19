@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'masochist-collection';
-    src: url('masochist-collection.eot?72327072');
-    src: url('masochist-collection.eot?72327072#iefix') format('embedded-opentype'),
-    url('masochist-collection.woff?72327072') format('woff'),
-    url('masochist-collection.ttf?72327072') format('truetype'),
-    url('masochist-collection.svg?72327072#masochist-collection') format('svg');
+    src: url('../fonts/masochist-collection.eot?72327072');
+    src: url('../fonts/masochist-collection.eot?72327072#iefix') format('embedded-opentype'),
+    url('../fonts/masochist-collection.woff?72327072') format('woff'),
+    url('../fonts/masochist-collection.ttf?72327072') format('truetype'),
+    url('../fonts/masochist-collection.svg?72327072#masochist-collection') format('svg');
     font-weight: normal;
     font-style: normal;
 }

@@ -1,3 +1,4 @@
+/dist/
 /assets/
 /jspm_packages/
 /node_modules/
@@ -5,7 +6,7 @@
 #jetbrains
 /public/.idea/
 #composer
-/public/bower_components
+/bower_components
 /vendor/
 # Windows image file caches
 Thumbs.db
