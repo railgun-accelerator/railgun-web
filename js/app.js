@@ -25,7 +25,8 @@
     price_plan: {
       1: '3',
       3: '2.5',
-      4: '2'
+      4: '2',
+      6: '1.5'
     },
     invoice_type: {
       1: '充值',
@@ -164,12 +165,12 @@
       token: store.get('token')
     }).done((function(_this) {
       return function(data, textStatus, jqXHR) {
-        if (data.zone !== _this.zone_id.value) {
+        if (data.zone !== $("input[name='zone_id']:checked").val()) {
           return $.ajax({
             url: "/api/zone?token=" + (store.get('token')),
             type: 'PUT',
             data: JSON.stringify({
-              zone: _this.zone_id.value
+              zone: $("input[name='zone_id']:checked").val()
             }),
             contentType: "application/json; charset=utf-8"
           }).done(function(data, textStatus, jqXHR) {
@@ -178,7 +179,7 @@
               url: "/api/plan?token=" + (store.get('token')),
               type: 'POST',
               data: JSON.stringify({
-                id: _this.plan_id.value
+                id: $("input[name='plan_id']:checked").val()
               }),
               contentType: "application/json; charset=utf-8"
             }).done(function(data, textStatus, jqXHR) {
@@ -195,7 +196,7 @@
             url: "/api/plan?token=" + (store.get('token')),
             type: 'POST',
             data: JSON.stringify({
-              id: _this.plan_id.value
+              id: $("input[name='plan_id']:checked").val()
             }),
             contentType: "application/json; charset=utf-8"
           }).done(function(data, textStatus, jqXHR) {
@@ -212,7 +213,7 @@
   });
 
   $('#pay input[name=payment]').change(function(event) {
-    if (this.value === 'code') {
+    if ($("input[name=payment]:checked").val()) {
       $('#pay_amount').hide();
       return $('#pay_code').show();
     } else {
@@ -490,7 +491,7 @@
                     sub_password_4: parseInt(user.sub_password) + 3
                   })));
                   if (document.getElementById("qrcode")) {
-                    return new QRCode(document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:railgun@" + user.zone + ".lv5.ac:" + (parseInt(user.sub_password) + 3))));
+                    return new QRCode(document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:" + user.username + "@" + user.zone + ".lv5.ac:" + (parseInt(user.sub_password) + 3))));
                   }
                 });
               });

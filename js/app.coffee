@@ -13,6 +13,7 @@ i18n =
     1: '3'
     3: '2.5'
     4: '2'
+    6: '1.5'
   invoice_type:
     1: '充值'
     2: '流量消费'
@@ -124,12 +125,12 @@ $('#change_plan').submit (event)->
   event.preventDefault()
   $.getJSON '/api/sign_in', token: store.get('token')
   .done (data, textStatus, jqXHR)=>
-    if data.zone != @zone_id.value
+    if data.zone != $("input[name='zone_id']:checked").val()
       $.ajax
         url: "/api/zone?token=#{store.get('token')}",
         type: 'PUT'
         data: JSON.stringify
-          zone: @zone_id.value
+          zone: $("input[name='zone_id']:checked").val()
         contentType: "application/json; charset=utf-8"
       .done (data, textStatus, jqXHR)=>
         console.log '切换地区成功'
@@ -137,7 +138,7 @@ $('#change_plan').submit (event)->
           url: "/api/plan?token=#{store.get('token')}",
           type: 'POST'
           data: JSON.stringify
-            id: @plan_id.value
+            id: $("input[name='plan_id']:checked").val()
           contentType: "application/json; charset=utf-8"
         .done (data, textStatus, jqXHR)->
           console.log '切换套餐成功'
@@ -151,7 +152,7 @@ $('#change_plan').submit (event)->
         url: "/api/plan?token=#{store.get('token')}",
         type: 'POST'
         data: JSON.stringify
-          id: @plan_id.value
+          id: $("input[name='plan_id']:checked").val()
         contentType: "application/json; charset=utf-8"
       .done (data, textStatus, jqXHR)->
         console.log '切换套餐成功'
@@ -161,7 +162,7 @@ $('#change_plan').submit (event)->
   .fail (jqXHR, textStatus, errorThrown)->
     alert('未知错误1')
 $('#pay input[name=payment]').change (event)->
-  if @value == 'code'
+  if $("input[name=payment]:checked").val()
     $('#pay_amount').hide()
     $('#pay_code').show()
   else
@@ -349,7 +350,7 @@ switch uri.path()
                 template = Hogan.compile(data);
                 $('#tutorial').html marked template.render zone: user.zone, address: user.dns_info["#{user.zone}.lv5.ac"], dns_server: {'h':'10.8.0.1', 'a':'10.1.0.1', j:'10.9.0.1'}[user.zone], username: user.username, sub_password: user.sub_password, sub_password_2: parseInt(user.sub_password)+1, sub_password_3: parseInt(user.sub_password)+2, sub_password_4: parseInt(user.sub_password)+3
                 if document.getElementById("qrcode")
-                  new QRCode document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:railgun@#{user.zone}.lv5.ac:#{parseInt(user.sub_password)+3}"))
+                  new QRCode document.getElementById("qrcode"), 'ss://' + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse("aes-256-cfb:#{user.username}@#{user.zone}.lv5.ac:#{parseInt(user.sub_password)+3}"))
       .fail (jqXHR, textStatus, errorThrown)->
         $('#not_sign_in').show()
     else
