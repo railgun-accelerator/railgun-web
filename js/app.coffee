@@ -162,7 +162,7 @@ $('#change_plan').submit (event)->
   .fail (jqXHR, textStatus, errorThrown)->
     alert('未知错误1')
 $('#pay input[name=payment]').change (event)->
-  if $("input[name=payment]:checked").val()
+  if $("input[name=payment]:checked").val() == 'code'
     $('#pay_amount').hide()
     $('#pay_code').show()
   else

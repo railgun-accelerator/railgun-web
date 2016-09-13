@@ -213,7 +213,7 @@
   });
 
   $('#pay input[name=payment]').change(function(event) {
-    if ($("input[name=payment]:checked").val()) {
+    if ($("input[name=payment]:checked").val() == 'code') {
       $('#pay_amount').hide();
       return $('#pay_code').show();
     } else {
